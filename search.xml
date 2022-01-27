@@ -4,19 +4,50 @@
   
     
     <entry>
-      <title>Hello World</title>
-      <link href="/2022/01/27/hello-world/"/>
-      <url>/2022/01/27/hello-world/</url>
+      <title>PicGo: 上传失败! You must be logged in to use.</title>
+      <link href="/2022/01/27/PicGo-%E4%B8%8A%E4%BC%A0%E5%A4%B1%E8%B4%A5-You-must-be-logged-in-to-use/"/>
+      <url>/2022/01/27/PicGo-%E4%B8%8A%E4%BC%A0%E5%A4%B1%E8%B4%A5-You-must-be-logged-in-to-use/</url>
       
-        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><hr><pre><code class="bash">hexo new &quot;My New Post&quot;</code></pre><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">hexo server这是启动代码</code></pre><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy</code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+        <content type="html"><![CDATA[<!--  python - Java - 前端 - 工具 - 数据库 - 日志 --><p><img src="https://raw.githubusercontent.com/lcfsgit/image/master/20220127161135.png?token=AXFEOY4AJJWY2MFT42N34XTB6JJ7G" alt="20220127161135"></p><p>解决方案<br><img src="https://raw.githubusercontent.com/lcfsgit/image/master/20220127161220.png?token=AXFEOY3Y4HKQSMTR6TLKANTB6JKB6" alt="20220127161220"><br>设置为github即可</p>]]></content>
       
       
       <categories>
           
-          <category> 工具 </category>
+          <category> python </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 错误 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>个性化消息</title>
+      <link href="/2022/01/27/%E4%B8%80%E5%A4%A9%E4%B8%80%E4%B8%AA%E5%B0%8F%E5%8A%9F%E8%83%BD%EF%BC%881%EF%BC%89/"/>
+      <url>/2022/01/27/%E4%B8%80%E5%A4%A9%E4%B8%80%E4%B8%AA%E5%B0%8F%E5%8A%9F%E8%83%BD%EF%BC%881%EF%BC%89/</url>
+      
+        <content type="html"><![CDATA[<!--  python - Java - 前端 - 工具 - 数据库 - 日志 --><h3 id="给定存储用户的姓名的列表中，并向该用户显示一条消息。显示的消息应非常简单，要求人名首字母大写，并剔除人名中的空白，如"><a href="#给定存储用户的姓名的列表中，并向该用户显示一条消息。显示的消息应非常简单，要求人名首字母大写，并剔除人名中的空白，如" class="headerlink" title="给定存储用户的姓名的列表中，并向该用户显示一条消息。显示的消息应非常简单，要求人名首字母大写，并剔除人名中的空白，如"></a>给定存储用户的姓名的列表中，并向该用户显示一条消息。显示的消息应非常简单，要求人名首字母大写，并剔除人名中的空白，如</h3><pre><code>“Hello Eric, would you like to learn some Python today?”</code></pre><p>代码如下</p><pre><code class="python">name=[&#39;tom &#39;,&#39; nike &#39;]for i in range(0,2):    s_name=name[i].title()#首字母大写    print(s_name.strip()+&#39; would you like to learn some Python today?&#39;)#去除字符串两端空白</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 一天一个小功能 </tag>
+            
+        </tags>
       
     </entry>
     
