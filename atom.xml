@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-01-28T04:07:31.819Z</updated>
+  <updated>2022-01-28T04:51:14.133Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>修改节目单</title>
+    <link href="http://example.com/2022/01/28/%E4%B8%80%E5%A4%A9%E4%B8%80%E4%B8%AA%E5%B0%8F%E5%8A%9F%E8%83%BD2/"/>
+    <id>http://example.com/2022/01/28/%E4%B8%80%E5%A4%A9%E4%B8%80%E4%B8%AA%E5%B0%8F%E5%8A%9F%E8%83%BD2/</id>
+    <published>2022-01-28T04:57:39.000Z</published>
+    <updated>2022-01-28T04:51:14.133Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="给定已经排好顺序的节目单，现因变动，需要将节目调整，调整如下："><a href="#给定已经排好顺序的节目单，现因变动，需要将节目调整，调整如下：" class="headerlink" title="给定已经排好顺序的节目单，现因变动，需要将节目调整，调整如下："></a>给定已经排好顺序的节目单，现因变动，需要将节目调整，调整如下：</h3><ul><li>添加小品到节目单末尾</li><li>在节目单第二个位置插入节目相声</li><li>删除唱歌节目</li><li>将跳舞节目调整到第三位<h3 id="节目单列表"><a href="#节目单列表" class="headerlink" title="节目单列表"></a>节目单列表</h3>[‘跳舞’,’唱歌’,’京剧’]<pre><code class="python">play=[&#39;跳舞&#39;,&#39;唱歌&#39;,&#39;京剧&#39;]play.append(&#39;小品&#39;)play.insert(1,&#39;相声&#39;)del play[2]popd=play.pop(0)play.insert(2,popd)print(play)</code></pre>运行结果<pre><code>PS C:\Users\20174&gt; &amp; &quot;C:/Program Files (x86)/Microsoft Visual Studio/Shared/Python39_64/python.exe&quot; c:/Users/20174/Desktop/Untitled-2.py[&#39;相声&#39;, &#39;京剧&#39;, &#39;跳舞&#39;, &#39;小品&#39;]</code></pre></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;给定已经排好顺序的节目单，现因变动，需要将节目调整，调整如下：&quot;&gt;&lt;a href=&quot;#给定已经排好顺序的节目单，现因变动，需要将节目调整，调整如下：&quot; class=&quot;headerlink&quot; title=&quot;给定已经排好顺序的节目单，现因变动，需要将节目调整，调整如下</summary>
+      
+    
+    
+    
+    <category term="python" scheme="http://example.com/categories/python/"/>
+    
+    <category term="每天小功能" scheme="http://example.com/categories/python/%E6%AF%8F%E5%A4%A9%E5%B0%8F%E5%8A%9F%E8%83%BD/"/>
+    
+    
+    <category term="每天小功能" scheme="http://example.com/tags/%E6%AF%8F%E5%A4%A9%E5%B0%8F%E5%8A%9F%E8%83%BD/"/>
+    
+  </entry>
   
   <entry>
     <title>PicGo: 上传失败! You must be logged in to use.</title>
@@ -51,25 +77,25 @@
     <link href="http://example.com/2022/01/27/%E4%B8%80%E5%A4%A9%E4%B8%80%E4%B8%AA%E5%B0%8F%E5%8A%9F%E8%83%BD%EF%BC%881%EF%BC%89/"/>
     <id>http://example.com/2022/01/27/%E4%B8%80%E5%A4%A9%E4%B8%80%E4%B8%AA%E5%B0%8F%E5%8A%9F%E8%83%BD%EF%BC%881%EF%BC%89/</id>
     <published>2022-01-27T03:57:39.000Z</published>
-    <updated>2022-01-27T08:31:08.676Z</updated>
+    <updated>2022-01-28T04:49:58.782Z</updated>
     
-    <content type="html"><![CDATA[<!--  python - Java - 前端 - 工具 - 数据库 - 日志 --><h3 id="给定存储用户的姓名的列表中，并向该用户显示一条消息。显示的消息应非常简单，要求人名首字母大写，并剔除人名中的空白，如"><a href="#给定存储用户的姓名的列表中，并向该用户显示一条消息。显示的消息应非常简单，要求人名首字母大写，并剔除人名中的空白，如" class="headerlink" title="给定存储用户的姓名的列表中，并向该用户显示一条消息。显示的消息应非常简单，要求人名首字母大写，并剔除人名中的空白，如"></a>给定存储用户的姓名的列表中，并向该用户显示一条消息。显示的消息应非常简单，要求人名首字母大写，并剔除人名中的空白，如</h3><pre><code>“Hello Eric, would you like to learn some Python today?”</code></pre><p>代码如下</p><pre><code class="python">name=[&#39;tom &#39;,&#39; nike &#39;]for i in range(0,2):    s_name=name[i].title()#首字母大写    print(s_name.strip()+&#39; would you like to learn some Python today?&#39;)#去除字符串两端空白</code></pre>]]></content>
+    <content type="html"><![CDATA[<!--  python - Java - 前端 - 工具 - 数据库 - 日志 --><h3 id="给定存储用户的姓名的列表，向每个用户显示一条消息。显示的消息非常简单，要求人名首字母大写，并剔除人名中的空白，如"><a href="#给定存储用户的姓名的列表，向每个用户显示一条消息。显示的消息非常简单，要求人名首字母大写，并剔除人名中的空白，如" class="headerlink" title="给定存储用户的姓名的列表，向每个用户显示一条消息。显示的消息非常简单，要求人名首字母大写，并剔除人名中的空白，如"></a>给定存储用户的姓名的列表，向每个用户显示一条消息。显示的消息非常简单，要求人名首字母大写，并剔除人名中的空白，如</h3><pre><code>“Hello Eric, would you like to learn some Python today?”</code></pre><p>代码如下</p><pre><code class="python">name=[&#39;tom &#39;,&#39; nike &#39;]for i in range(0,2):    s_name=name[i].title()#首字母大写    print(s_name.strip()+&#39; would you like to learn some Python today?&#39;)#去除字符串两端空白</code></pre>]]></content>
     
     
       
       
     <summary type="html">&lt;!--  python - Java - 前端 - 工具 - 数据库 - 日志 --&gt;
-&lt;h3 id=&quot;给定存储用户的姓名的列表中，并向该用户显示一条消息。显示的消息应非常简单，要求人名首字母大写，并剔除人名中的空白，如&quot;&gt;&lt;a href=&quot;#给定存储用户的姓名的列表中，并向该</summary>
+&lt;h3 id=&quot;给定存储用户的姓名的列表，向每个用户显示一条消息。显示的消息非常简单，要求人名首字母大写，并剔除人名中的空白，如&quot;&gt;&lt;a href=&quot;#给定存储用户的姓名的列表，向每个用户显</summary>
       
     
     
     
     <category term="python" scheme="http://example.com/categories/python/"/>
     
-    <category term="一天一个小功能" scheme="http://example.com/categories/python/%E4%B8%80%E5%A4%A9%E4%B8%80%E4%B8%AA%E5%B0%8F%E5%8A%9F%E8%83%BD/"/>
+    <category term="每天小功能" scheme="http://example.com/categories/python/%E6%AF%8F%E5%A4%A9%E5%B0%8F%E5%8A%9F%E8%83%BD/"/>
     
     
-    <category term="一天一个小功能" scheme="http://example.com/tags/%E4%B8%80%E5%A4%A9%E4%B8%80%E4%B8%AA%E5%B0%8F%E5%8A%9F%E8%83%BD/"/>
+    <category term="每天小功能" scheme="http://example.com/tags/%E6%AF%8F%E5%A4%A9%E5%B0%8F%E5%8A%9F%E8%83%BD/"/>
     
   </entry>
   
@@ -78,7 +104,7 @@
     <link href="http://example.com/2022/01/27/%E5%88%B6%E8%A1%A8%E7%AC%A6/"/>
     <id>http://example.com/2022/01/27/%E5%88%B6%E8%A1%A8%E7%AC%A6/</id>
     <published>2022-01-27T03:57:39.000Z</published>
-    <updated>2022-01-28T04:23:33.188Z</updated>
+    <updated>2022-01-28T04:30:42.671Z</updated>
     
     <content type="html"><![CDATA[<h3 id="制表符’-t’-相当于添加空格"><a href="#制表符’-t’-相当于添加空格" class="headerlink" title="制表符’\t’,相当于添加空格"></a>制表符’\t’,相当于添加空格</h3><h3 id="换行符’-n’-相当于换行"><a href="#换行符’-n’-相当于换行" class="headerlink" title="换行符’\n’,相当于换行"></a>换行符’\n’,相当于换行</h3><pre><code>print(&quot;这是一个空格\t&quot;+&quot;这是一个换行\n&quot;+&quot;我们是一句话&quot;)</code></pre><p><img src="https://raw.githubusercontent.com/lcfsgit/image/master/20220128122327.png?token=AXFEOYYW2R5U4OOK5EAN3NTB6NX7U" alt="20220128122327"></p>]]></content>
     
