@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-01-31T07:14:47.758Z</updated>
+  <updated>2022-01-31T09:49:07.389Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>复制列表</title>
+    <link href="http://example.com/2022/01/31/%E5%A4%8D%E5%88%B6%E5%88%97%E8%A1%A8/"/>
+    <id>http://example.com/2022/01/31/%E5%A4%8D%E5%88%B6%E5%88%97%E8%A1%A8/</id>
+    <published>2022-01-31T09:38:49.000Z</published>
+    <updated>2022-01-31T09:49:07.389Z</updated>
+    
+    <content type="html"><![CDATA[<!--  python - Java - 前端 - 工具 - 数据库 - 日志 --><h3 id="列表复制有两种方式，一种是利用切片复制，结果为两个列表；另一种是直接赋值，两个变量共享一个列表"><a href="#列表复制有两种方式，一种是利用切片复制，结果为两个列表；另一种是直接赋值，两个变量共享一个列表" class="headerlink" title="列表复制有两种方式，一种是利用切片复制，结果为两个列表；另一种是直接赋值，两个变量共享一个列表"></a>列表复制有两种方式，一种是利用切片复制，结果为两个列表；另一种是直接赋值，两个变量共享一个列表</h3><ol><li>利用切片<pre><code>a=[&#39;1&#39;]b=a[:]a.append(&#39;2&#39;)b.append(&#39;3&#39;)print(a)print(b)</code></pre>运行结果<pre><code>[&#39;1&#39;, &#39;2&#39;][&#39;1&#39;, &#39;3&#39;]</code></pre></li><li>直接赋值<pre><code>a=[&#39;1&#39;]b=aa.append(&#39;2&#39;)b.append(&#39;3&#39;)print(a)print(b)</code></pre>运行结果<pre><code>[&#39;1&#39;, &#39;2&#39;, &#39;3&#39;][&#39;1&#39;, &#39;2&#39;, &#39;3&#39;]</code></pre></li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;!--  python - Java - 前端 - 工具 - 数据库 - 日志 --&gt;
+&lt;h3 id=&quot;列表复制有两种方式，一种是利用切片复制，结果为两个列表；另一种是直接赋值，两个变量共享一个列表&quot;&gt;&lt;a href=&quot;#列表复制有两种方式，一种是利用切片复制，结果为两个列表；</summary>
+      
+    
+    
+    
+    <category term="python" scheme="http://example.com/categories/python/"/>
+    
+    <category term="编程知识" scheme="http://example.com/categories/python/%E7%BC%96%E7%A8%8B%E7%9F%A5%E8%AF%86/"/>
+    
+    
+    <category term="列表" scheme="http://example.com/tags/%E5%88%97%E8%A1%A8/"/>
+    
+    <category term="复制" scheme="http://example.com/tags/%E5%A4%8D%E5%88%B6/"/>
+    
+    <category term="切片" scheme="http://example.com/tags/%E5%88%87%E7%89%87/"/>
+    
+  </entry>
   
   <entry>
     <title>range函数-生成列表</title>

@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>复制列表</title>
+      <link href="/2022/01/31/%E5%A4%8D%E5%88%B6%E5%88%97%E8%A1%A8/"/>
+      <url>/2022/01/31/%E5%A4%8D%E5%88%B6%E5%88%97%E8%A1%A8/</url>
+      
+        <content type="html"><![CDATA[<!--  python - Java - 前端 - 工具 - 数据库 - 日志 --><h3 id="列表复制有两种方式，一种是利用切片复制，结果为两个列表；另一种是直接赋值，两个变量共享一个列表"><a href="#列表复制有两种方式，一种是利用切片复制，结果为两个列表；另一种是直接赋值，两个变量共享一个列表" class="headerlink" title="列表复制有两种方式，一种是利用切片复制，结果为两个列表；另一种是直接赋值，两个变量共享一个列表"></a>列表复制有两种方式，一种是利用切片复制，结果为两个列表；另一种是直接赋值，两个变量共享一个列表</h3><ol><li>利用切片<pre><code>a=[&#39;1&#39;]b=a[:]a.append(&#39;2&#39;)b.append(&#39;3&#39;)print(a)print(b)</code></pre>运行结果<pre><code>[&#39;1&#39;, &#39;2&#39;][&#39;1&#39;, &#39;3&#39;]</code></pre></li><li>直接赋值<pre><code>a=[&#39;1&#39;]b=aa.append(&#39;2&#39;)b.append(&#39;3&#39;)print(a)print(b)</code></pre>运行结果<pre><code>[&#39;1&#39;, &#39;2&#39;, &#39;3&#39;][&#39;1&#39;, &#39;2&#39;, &#39;3&#39;]</code></pre></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> python </category>
+          
+          <category> 编程知识 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 列表 </tag>
+            
+            <tag> 复制 </tag>
+            
+            <tag> 切片 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>range函数-生成列表</title>
       <link href="/2022/01/31/range%E5%87%BD%E6%95%B0-%E7%94%9F%E6%88%90%E5%88%97%E8%A1%A8/"/>
       <url>/2022/01/31/range%E5%87%BD%E6%95%B0-%E7%94%9F%E6%88%90%E5%88%97%E8%A1%A8/</url>
