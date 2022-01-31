@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-01-31T05:49:32.955Z</updated>
+  <updated>2022-01-31T07:14:47.758Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,11 +17,40 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>range函数-生成列表</title>
+    <link href="http://example.com/2022/01/31/range%E5%87%BD%E6%95%B0-%E7%94%9F%E6%88%90%E5%88%97%E8%A1%A8/"/>
+    <id>http://example.com/2022/01/31/range%E5%87%BD%E6%95%B0-%E7%94%9F%E6%88%90%E5%88%97%E8%A1%A8/</id>
+    <published>2022-01-31T06:40:17.000Z</published>
+    <updated>2022-01-31T07:14:47.758Z</updated>
+    
+    <content type="html"><![CDATA[<!--  python - Java - 前端 - 工具 - 数据库 - 日志 --><h3 id="创建1-11平方的列表，有两种方式"><a href="#创建1-11平方的列表，有两种方式" class="headerlink" title="创建1-11平方的列表，有两种方式"></a>创建1-11平方的列表，有两种方式</h3><ol><li>建立一个空列表，并利用循环不断地将元素依次用append()函数加到空列表末尾<pre><code>nums=[]for i in range(1,11): num=i**2 nums.append(num)for i in nums: print(i,end=&quot;&quot;)#end等于空不换行</code></pre></li><li><pre><code>nums=[i**2 for i in range(1,11)]</code></pre></li></ol><p>tips:<br>指定步长的循环</p><pre><code>for i in range(1,11,2)#函数range()从1开始数，然后不断地加2，直到达到或超过终值（11）</code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;!--  python - Java - 前端 - 工具 - 数据库 - 日志 --&gt;
+&lt;h3 id=&quot;创建1-11平方的列表，有两种方式&quot;&gt;&lt;a href=&quot;#创建1-11平方的列表，有两种方式&quot; class=&quot;headerlink&quot; title=&quot;创建1-11平方的列表，有</summary>
+      
+    
+    
+    
+    <category term="python" scheme="http://example.com/categories/python/"/>
+    
+    <category term="编程知识" scheme="http://example.com/categories/python/%E7%BC%96%E7%A8%8B%E7%9F%A5%E8%AF%86/"/>
+    
+    
+    <category term="列表" scheme="http://example.com/tags/%E5%88%97%E8%A1%A8/"/>
+    
+    <category term="循环" scheme="http://example.com/tags/%E5%BE%AA%E7%8E%AF/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Connection was reset, errno 10054</title>
     <link href="http://example.com/2022/01/31/Connection-was-reset-errno-10054/"/>
     <id>http://example.com/2022/01/31/Connection-was-reset-errno-10054/</id>
     <published>2022-01-31T05:17:25.000Z</published>
-    <updated>2022-01-31T05:49:32.955Z</updated>
+    <updated>2022-01-31T06:12:32.333Z</updated>
     
     <content type="html"><![CDATA[<!--  python - Java - 前端 - 工具 - 数据库 - 日志 --><h3 id="‘Connection-was-reset-errno-10054’在使用hexo上传博客文件到github-page时出现了如上错误"><a href="#‘Connection-was-reset-errno-10054’在使用hexo上传博客文件到github-page时出现了如上错误" class="headerlink" title="‘Connection was reset, errno 10054’在使用hexo上传博客文件到github page时出现了如上错误"></a>‘Connection was reset, errno 10054’在使用hexo上传博客文件到github page时出现了如上错误</h3><h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><ul><li>打开<a href="https://ipaddress.com/website/github.com#ipinfo">网址</a>,查询github.com的ip地址<br><img src="https://sway.office.com/s/qyaL14UNufaNnrTp/images/AdEDkbUgK08Tzj" alt="20220128120553"></li><li>以管理员身份打开系统hosts文件，在文件结尾添加ip地址即可例如：</li></ul><p>140.82.113.3 github.com </p><ul><li>保存</li><li>再次上传，成功</li></ul>]]></content>
     

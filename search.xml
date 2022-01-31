@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>range函数-生成列表</title>
+      <link href="/2022/01/31/range%E5%87%BD%E6%95%B0-%E7%94%9F%E6%88%90%E5%88%97%E8%A1%A8/"/>
+      <url>/2022/01/31/range%E5%87%BD%E6%95%B0-%E7%94%9F%E6%88%90%E5%88%97%E8%A1%A8/</url>
+      
+        <content type="html"><![CDATA[<!--  python - Java - 前端 - 工具 - 数据库 - 日志 --><h3 id="创建1-11平方的列表，有两种方式"><a href="#创建1-11平方的列表，有两种方式" class="headerlink" title="创建1-11平方的列表，有两种方式"></a>创建1-11平方的列表，有两种方式</h3><ol><li>建立一个空列表，并利用循环不断地将元素依次用append()函数加到空列表末尾<pre><code>nums=[]for i in range(1,11): num=i**2 nums.append(num)for i in nums: print(i,end=&quot;&quot;)#end等于空不换行</code></pre></li><li><pre><code>nums=[i**2 for i in range(1,11)]</code></pre></li></ol><p>tips:<br>指定步长的循环</p><pre><code>for i in range(1,11,2)#函数range()从1开始数，然后不断地加2，直到达到或超过终值（11）</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> python </category>
+          
+          <category> 编程知识 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 列表 </tag>
+            
+            <tag> 循环 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Connection was reset, errno 10054</title>
       <link href="/2022/01/31/Connection-was-reset-errno-10054/"/>
       <url>/2022/01/31/Connection-was-reset-errno-10054/</url>
