@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>links | Hexo</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="links | Hexo">
+  <title>放眼世界 | Hexo</title>
+  <meta name="keywords" content=" 排序 ">
+  <meta name="description" content="放眼世界 | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="About">
@@ -386,24 +386,41 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+        <article id="post-每天小功能3-1" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">links</h1>
+        <h1 class="article-title">放眼世界</h1>
     
     <div class="article-meta">
         
         
         
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="python">python</a> > 
+            
+            <a  data-rel="python&lt;---&gt;每天小功能">每天小功能</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color3">排序</a>
+            
+        </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2022-01-22 14:24:15'>2022-01-22 14:24</time>
+            发布时间 : <time class="date" title='最后更新: 2022-01-31 10:17:53'>2022-01-31 09:48</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:0</span>
+        <span>字数:966</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -433,7 +450,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%80%81%E5%A9%86%E7%BB%99%E5%AE%9A%E4%B8%80%E4%B8%AA%E5%88%97%E8%A1%A8%EF%BC%8C%E5%AD%98%E5%82%A8%E6%83%B3%E8%A6%81%E5%8E%BB%E7%9A%84%E6%97%85%E6%B8%B8%E7%9A%84%E5%9C%B0%E6%96%B9%EF%BC%8C%E4%BD%86%E6%98%AF%E5%8E%BB%E8%BF%99%E4%BA%9B%E5%9C%B0%E6%96%B9%E7%9A%84%E9%A1%BA%E5%BA%8F%E8%AE%A9%E5%A5%B9%E5%BE%88%E7%9F%9B%E7%9B%BE%EF%BC%8C%E8%AE%A9%E4%BD%A0%E5%B8%AE%E5%BF%99%E5%86%B3%E7%AD%96%EF%BC%8C%E8%A6%81%E6%B1%82%E5%8A%9F%E8%83%BD%E5%A6%82%E4%B8%8B%EF%BC%8C%E5%B8%AE%E5%8A%A9%E8%87%AA%E5%B7%B1%E5%81%9A%E5%87%BA%E5%86%B3%E7%AD%96%E3%80%82"><span class="toc-text">老婆给定一个列表，存储想要去的旅游的地方，但是去这些地方的顺序让她很矛盾，让你帮忙决策，要求功能如下，帮助自己做出决策。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C"><span class="toc-text">运行结果</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -449,7 +466,51 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <!--  python - Java - 前端 - 工具 - 数据库 - 日志 -->
+<h3 id="老婆给定一个列表，存储想要去的旅游的地方，但是去这些地方的顺序让她很矛盾，让你帮忙决策，要求功能如下，帮助自己做出决策。"><a href="#老婆给定一个列表，存储想要去的旅游的地方，但是去这些地方的顺序让她很矛盾，让你帮忙决策，要求功能如下，帮助自己做出决策。" class="headerlink" title="老婆给定一个列表，存储想要去的旅游的地方，但是去这些地方的顺序让她很矛盾，让你帮忙决策，要求功能如下，帮助自己做出决策。"></a>老婆给定一个列表，存储想要去的旅游的地方，但是去这些地方的顺序让她很矛盾，让你帮忙决策，要求功能如下，帮助自己做出决策。</h3><pre><code>view = [&#39;布达拉宫&#39;, &#39;稻城亚丁&#39;, &#39;故宫&#39;, &#39;张家界&#39;,&#39;九寨沟&#39;,&#39;丽江古城&#39;,&#39;雅鲁藏布江大峡谷&#39;,&#39;乐山大佛&#39;,&#39;万里长城&#39;]
+</code></pre>
+<ol>
+<li>按原始排列顺序打印该列表</li>
+<li>按字母顺序打印这个列表，同时不要修改它</li>
+<li>再次打印该列表，核实排列顺序未变</li>
+<li>按与字母顺序相反的顺序打印这个列表，同时不要修改它</li>
+<li>再次打印该列表，核实排列顺序未变</li>
+<li>使用 reverse()修改列表元素的排列顺序。打印该列表，核实排列顺序确实变了。</li>
+<li>使用 reverse()再次修改列表元素的排列顺序。打印该列表，核实已恢复到原来的排列顺序。</li>
+<li>使用 sort()修改该列表，使其元素按字母顺序排列。打印该列表，核实排列顺序确实变了。</li>
+<li>使用 sort()修改该列表，使其元素按与字母顺序相反的顺序排列。打印该列表，核实排列顺序确实变了</li>
+<li>打印一条消息，指出来一共有多少个地方要去</li>
+</ol>
+<pre><code>print(view)
+print(sorted(view)) #sorted()按照字母顺序临时性排序
+print(view)
+print(sorted(view,reverse=True)) #sorted()加入reverse=true，按照字母相反顺序临时性排序
+print(view)
+
+view.reverse() #reverse（）按照字母相反顺序永久性排序
+print(view)
+
+view.reverse() 
+print(view)
+
+view.sort() #sort()按照字母顺序永久性排序
+print(view)
+
+view.sort(reverse=True) #按照字母相反顺序永久性排序
+print(view)
+</code></pre>
+<h3 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h3><pre><code>PS C:\Users\20174&gt; &amp; &quot;C:/Program Files (x86)/Microsoft Visual Studio/Shared/Python39_64/python.exe&quot; c:/Users/20174/Desktop/Untitled-2.py
+[&#39;布达拉宫&#39;, &#39;稻城亚丁&#39;, &#39;故宫&#39;, &#39;张家界&#39;, &#39;九寨沟&#39;, &#39;丽江古城&#39;, &#39;雅鲁藏布江大峡谷&#39;, &#39;乐山大佛&#39;, &#39;万里长城&#39;]
+[&#39;万里长城&#39;, &#39;丽江古城&#39;, &#39;乐山大佛&#39;, &#39;九寨沟&#39;, &#39;布达拉宫&#39;, &#39;张家界&#39;, &#39;故宫&#39;, &#39;稻城亚丁&#39;, &#39;雅鲁藏布江大峡谷&#39;]
+[&#39;布达拉宫&#39;, &#39;稻城亚丁&#39;, &#39;故宫&#39;, &#39;张家界&#39;, &#39;九寨沟&#39;, &#39;丽江古城&#39;, &#39;雅鲁藏布江大峡谷&#39;, &#39;乐山大佛&#39;, &#39;万里长城&#39;]
+[&#39;雅鲁藏布江大峡谷&#39;, &#39;稻城亚丁&#39;, &#39;故宫&#39;, &#39;张家界&#39;, &#39;布达拉宫&#39;, &#39;九寨沟&#39;, &#39;乐山大佛&#39;, &#39;丽江古城&#39;, &#39;万里长城&#39;]
+[&#39;布达拉宫&#39;, &#39;稻城亚丁&#39;, &#39;故宫&#39;, &#39;张家界&#39;, &#39;九寨沟&#39;, &#39;丽江古城&#39;, &#39;雅鲁藏布江大峡谷&#39;, &#39;乐山大佛&#39;, &#39;万里长城&#39;]
+[&#39;万里长城&#39;, &#39;乐山大佛&#39;, &#39;雅鲁藏布江大峡谷&#39;, &#39;丽江古城&#39;, &#39;九寨沟&#39;, &#39;张家界&#39;, &#39;故宫&#39;, &#39;稻城亚丁&#39;, &#39;布达拉宫&#39;]
+[&#39;布达拉宫&#39;, &#39;稻城亚丁&#39;, &#39;故宫&#39;, &#39;张家界&#39;, &#39;九寨沟&#39;, &#39;丽江古城&#39;, &#39;雅鲁藏布江大峡谷&#39;, &#39;乐山大佛&#39;, &#39;万里长城&#39;]
+[&#39;万里长城&#39;, &#39;丽江古城&#39;, &#39;乐山大佛&#39;, &#39;九寨沟&#39;, &#39;布达拉宫&#39;, &#39;张家界&#39;, &#39;故宫&#39;, &#39;稻城亚丁&#39;, &#39;雅鲁藏布江大峡谷&#39;]
+[&#39;雅鲁藏布江大峡谷&#39;, &#39;稻城亚丁&#39;, &#39;故宫&#39;, &#39;张家界&#39;, &#39;布达拉宫&#39;, &#39;九寨沟&#39;, &#39;乐山大佛&#39;, &#39;丽江古城&#39;, &#39;万里长城&#39;]
+</code></pre>
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论 </span>
     </div>
