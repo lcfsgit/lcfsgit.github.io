@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-01-31T05:38:15.251Z</updated>
+  <updated>2022-01-31T05:49:32.955Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://example.com/2022/01/31/Connection-was-reset-errno-10054/"/>
     <id>http://example.com/2022/01/31/Connection-was-reset-errno-10054/</id>
     <published>2022-01-31T05:17:25.000Z</published>
-    <updated>2022-01-31T05:38:15.251Z</updated>
+    <updated>2022-01-31T05:49:32.955Z</updated>
     
-    <content type="html"><![CDATA[<!--  python - Java - 前端 - 工具 - 数据库 - 日志 --><h3 id="‘Connection-was-reset-errno-10054’在使用hexo上传博客文件到github-page时出现了如上错误"><a href="#‘Connection-was-reset-errno-10054’在使用hexo上传博客文件到github-page时出现了如上错误" class="headerlink" title="‘Connection was reset, errno 10054’在使用hexo上传博客文件到github page时出现了如上错误"></a>‘Connection was reset, errno 10054’在使用hexo上传博客文件到github page时出现了如上错误</h3><h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><ul><li>打开<a href="https://ipaddress.com/website/github.com#ipinfo">网址</a>,查询github.com的ip地址</li><li>以管理员身份打开系统hosts文件，在文件结尾添加</li></ul><p>140.82.114.4 github.com </p><ul><li>保存</li><li>再次上传，成功</li></ul>]]></content>
+    <content type="html"><![CDATA[<!--  python - Java - 前端 - 工具 - 数据库 - 日志 --><h3 id="‘Connection-was-reset-errno-10054’在使用hexo上传博客文件到github-page时出现了如上错误"><a href="#‘Connection-was-reset-errno-10054’在使用hexo上传博客文件到github-page时出现了如上错误" class="headerlink" title="‘Connection was reset, errno 10054’在使用hexo上传博客文件到github page时出现了如上错误"></a>‘Connection was reset, errno 10054’在使用hexo上传博客文件到github page时出现了如上错误</h3><h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><ul><li>打开<a href="https://ipaddress.com/website/github.com#ipinfo">网址</a>,查询github.com的ip地址<br><img src="https://sway.office.com/s/qyaL14UNufaNnrTp/images/AdEDkbUgK08Tzj" alt="20220128120553"></li><li>以管理员身份打开系统hosts文件，在文件结尾添加ip地址即可例如：</li></ul><p>140.82.113.3 github.com </p><ul><li>保存</li><li>再次上传，成功</li></ul>]]></content>
     
     
       
