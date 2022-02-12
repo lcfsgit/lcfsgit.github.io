@@ -730,12 +730,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2022-02-12 15:07:04'>2022-02-12 15:04</time>
+            发布时间 : <time class="date" title='最后更新: 2022-02-12 15:39:39'>2022-02-12 15:04</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:700</span>
+        <span>字数:711</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -765,7 +765,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text"></span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Instead-of-skip-networking-the-default-is-now-to-listen-only-on"><span class="toc-text">Instead of skip-networking the default is now to listen only on</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#localhost-which-is-more-compatible-and-is-not-less-secure"><span class="toc-text">localhost which is more compatible and is not less secure.</span></a></li></ol>
+        
     
 <style>
     .left-col .switch-btn,
@@ -786,37 +786,71 @@
 <ul>
 <li><p>阿里云防火墙没有开启3306端口<br><img src="https://s2.loli.net/2022/02/12/3M1IRGeKifONEcg.png" alt="20220212150633"><br>打开控制台-安全-防火墙-开启-重启服务器-测试连接-失败</p>
 </li>
-<li><p>ubuntu18.04 未开启3306端口对外部访问的过滤导致外部访问无法进入，通过netstat命令，检查3306端口，果然只有一个127.0.0.1:3306的监听端口<br>```<br>ub64@ub64-1804-1:~$ netstat -ntpl<br>(Not all processes could be identified, non-owned process info<br>will not be shown, you would have to be root to see it all.)<br>Active Internet connections (only servers)<br>Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name<br>tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN      -<br>tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      -</p>
+<li><p>ubuntu18.04 未开启3306端口对外部访问的过滤导致外部访问无法进入，通过netstat命令，检查3306端口，果然只有一个127.0.0.1:3306的监听端口</p>
 </li>
 </ul>
-<pre><code>检查是否配置mysqld.cnf文件，bind-address的设置值问题
+<pre><code>ub64@ub64-1804-1:~$ netstat -ntpl
+(Not all processes could be identified, non-owned process info
+ will not be shown, you would have to be root to see it all.)
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN      -
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      -
 </code></pre>
-<p>vim /etc/mysql/mysql.conf.d/mysqld.cnf</p>
-<h1 id=""><a href="#" class="headerlink" title=""></a></h1><h1 id="Instead-of-skip-networking-the-default-is-now-to-listen-only-on"><a href="#Instead-of-skip-networking-the-default-is-now-to-listen-only-on" class="headerlink" title="Instead of skip-networking the default is now to listen only on"></a>Instead of skip-networking the default is now to listen only on</h1><h1 id="localhost-which-is-more-compatible-and-is-not-less-secure"><a href="#localhost-which-is-more-compatible-and-is-not-less-secure" class="headerlink" title="localhost which is more compatible and is not less secure."></a>localhost which is more compatible and is not less secure.</h1><p>bind-address            = 127.0.0.1</p>
-<pre><code>把bind-address修改成0.0.0.0，无限制，重启服务器，重新检查netstat，3306端口的访问已经有所有来源地址的监听了。
+<p>检查是否配置mysqld.cnf文件，bind-address的设置值问题</p>
+<pre><code>vim /etc/mysql/mysql.conf.d/mysqld.cnf
+ 
+#
+# Instead of skip-networking the default is now to listen only on
+# localhost which is more compatible and is not less secure.
+bind-address            = 127.0.0.1
 </code></pre>
-<p>ub64@ub64-1804-1:~$ netstat -ntpl<br>(Not all processes could be identified, non-owned process info<br> will not be shown, you would have to be root to see it all.)<br>Active Internet connections (only servers)<br>Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name<br>tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN      -<br>tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      -</p>
-<pre><code>
- 重启数据库，继续测试，还是连接失败；
-+ 防火墙问题，检查防火墙通过规则，果然grep一下没有见到3306的端口记录。
+<p>把bind-address修改成0.0.0.0，无限制，重启服务器，重新检查netstat，3306端口的访问已经有所有来源地址的监听了。</p>
+<pre><code>ub64@ub64-1804-1:~$ netstat -ntpl
+(Not all processes could be identified, non-owned process info
+ will not be shown, you would have to be root to see it all.)
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN      -
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      -
 </code></pre>
-<p>ub64@ub64-1804-1:<del>$ sudo iptables -L -n | grep 3306<br>ub64@ub64-1804-1:</del>$<br>···<br>iptables新增一条3306的端口允许通过规则，在重新检查一下iptables，这下有了。<br>···<br>ub64@ub64-1804-1:~$ sudo iptables -A INPUT -m state –state NEW -m tcp -p tcp –dport 3306 -j ACCEPT</p>
-<p>ub64@ub64-1804-1:<del>$ sudo iptables -L -n | grep 3306<br>ACCEPT     tcp  –  0.0.0.0/0            0.0.0.0/0            state NEW tcp dpt:3306<br>ub64@ub64-1804-1:</del>$</p>
-<pre><code>重新测试程序，程序访问成功。mysql的访问，不仅要设置user表用户的访问控制权限，还要设置mysqld.cnf的bind-address，同时系统防火墙规则也要配置好3306的端口通过权限。这3个地方的控制缺一不可
-
-（补充：表用户访问控制权限更改----改表法：
-登录MySQL：mysql -uroot -p ,输入密码，登陆进去
-选择mysql表，将host只能本地访问的 localhost 改为 %
-</code></pre>
-<p>mysql&gt;use mysql;   </p>
-<p>mysql&gt;update user set host=”%” where user=”chase”;  </p>
-<p>mysql&gt; select host,user from user;<br>+———–+——————+<br>| host      | user             |<br>+———–+——————+<br>| %         | chase            |<br>| localhost | debian-sys-maint |<br>| localhost | mysql.session    |<br>| localhost | mysql.sys        |<br>| localhost | root             |<br>+———–+——————+</p>
+<p> 重启数据库，继续测试，还是连接失败；</p>
 <ul>
-<li>rows in set (0.00 sec)<br>mysql&gt;flush privileges;  //刷新权限</li>
+<li>防火墙问题，检查防火墙通过规则，果然grep一下没有见到3306的端口记录。</li>
 </ul>
-<p>mysql&gt;exit;</p>
-<pre><code>）
+<pre><code>ub64@ub64-1804-1:~$ sudo iptables -L -n | grep 3306
+ub64@ub64-1804-1:~$ 
+···
+iptables新增一条3306的端口允许通过规则，在重新检查一下iptables，这下有了。
+···
+ub64@ub64-1804-1:~$ sudo iptables -A INPUT -m state --state NEW -m tcp -p tcp --dport 3306 -j ACCEPT
+ 
+ub64@ub64-1804-1:~$ sudo iptables -L -n | grep 3306
+ACCEPT     tcp  --  0.0.0.0/0            0.0.0.0/0            state NEW tcp dpt:3306
+ub64@ub64-1804-1:~$
 </code></pre>
+<p>重新测试程序，程序访问成功。mysql的访问，不仅要设置user表用户的访问控制权限，还要设置mysqld.cnf的bind-address，同时系统防火墙规则也要配置好3306的端口通过权限。这3个地方的控制缺一不可</p>
+<p>（补充：表用户访问控制权限更改—-改表法：<br>登录MySQL：mysql -uroot -p ,输入密码，登陆进去<br>选择mysql表，将host只能本地访问的 localhost 改为 %</p>
+<pre><code>mysql&gt;use mysql;   
+
+mysql&gt;update user set host=&quot;%&quot; where user=&quot;chase&quot;;  
+
+mysql&gt; select host,user from user;
++-----------+------------------+
+| host      | user             |
++-----------+------------------+
+| %         | chase            |
+| localhost | debian-sys-maint |
+| localhost | mysql.session    |
+| localhost | mysql.sys        |
+| localhost | root             |
++-----------+------------------+
++ rows in set (0.00 sec)
+mysql&gt;flush privileges;  //刷新权限
+
+mysql&gt;exit;
+</code></pre>
+<p>）</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论 </span>
