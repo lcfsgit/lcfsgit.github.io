@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-02-12T07:25:26.094Z</updated>
+  <updated>2022-02-12T14:02:58.815Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>if语句</title>
+    <link href="http://example.com/2022/02/12/if%E8%AF%AD%E5%8F%A5/"/>
+    <id>http://example.com/2022/02/12/if%E8%AF%AD%E5%8F%A5/</id>
+    <published>2022-02-12T13:00:04.000Z</published>
+    <updated>2022-02-12T14:02:58.815Z</updated>
+    
+    <content type="html"><![CDATA[<!--  python - Java - 前端 - 工具 - 数据库 - 日志 --><h3 id="判断是否相等（-），判断不相等（！-）"><a href="#判断是否相等（-），判断不相等（！-）" class="headerlink" title="判断是否相等（==），判断不相等（！=）"></a>判断是否相等（==），判断不相等（！=）</h3><ol><li>区分大小写</li><li>and表示且（条件必须都满足），or表示或（只要满足一个条件）</li></ol><h3 id="判断特定值是否包含在列表中（in）"><a href="#判断特定值是否包含在列表中（in）" class="headerlink" title="判断特定值是否包含在列表中（in）"></a>判断特定值是否包含在列表中（in）</h3><pre><code>a=[&#39;2&#39;,&#39;a&#39;]if(&#39;a&#39; in a):    print(&#39;在&#39;)</code></pre><h3 id="简单的if语句"><a href="#简单的if语句" class="headerlink" title="简单的if语句"></a>简单的if语句</h3><pre><code>age=18if(age&gt;=19):    print(&#39;true&#39;)</code></pre><h3 id="if-else语句"><a href="#if-else语句" class="headerlink" title="if-else语句"></a>if-else语句</h3><pre><code>a=[&#39;2&#39;,&#39;a&#39;]if(&#39;b&#39; in a):    print(&#39;在&#39;)else:    print(&#39;不在&#39;)</code></pre><h3 id="if-elif-else语句"><a href="#if-elif-else语句" class="headerlink" title="if-elif-else语句"></a>if-elif-else语句</h3><pre><code>a=[&#39;2&#39;,&#39;a&#39;]if(&#39;b&#39; in a):    print(&#39;b在其中&#39;)elif(&#39;c&#39; in a):    print(&#39;c在其中&#39;)elif(&#39;c&#39; in a):    print(&#39;d在其中&#39;)else:    print(&#39;bcd都不在其中&#39;)</code></pre><h3 id="if与列表结合"><a href="#if与列表结合" class="headerlink" title="if与列表结合"></a>if与列表结合</h3><ol><li><p>检查特殊元素</p></li><li><p>检查列表是否为空</p><pre><code>a=[]if a: print(&#39;非空&#39;)else: print(&quot;空&quot;)</code></pre></li><li><p>多个列表配合使用</p><pre><code>a=[&#39;1&#39;,&#39;2&#39;,&#39;3&#39;]b=[&#39;3&#39;,&#39;4&#39;]for i in b: if(i in a):     print(&#39;a中也有&#39;+i) else:     print(&#39;a中没有&#39;+i)</code></pre></li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;!--  python - Java - 前端 - 工具 - 数据库 - 日志 --&gt;
+&lt;h3 id=&quot;判断是否相等（-），判断不相等（！-）&quot;&gt;&lt;a href=&quot;#判断是否相等（-），判断不相等（！-）&quot; class=&quot;headerlink&quot; title=&quot;判断是否相等（==</summary>
+      
+    
+    
+    
+    <category term="python" scheme="http://example.com/categories/python/"/>
+    
+    <category term="编程知识" scheme="http://example.com/categories/python/%E7%BC%96%E7%A8%8B%E7%9F%A5%E8%AF%86/"/>
+    
+    
+    <category term="if语句" scheme="http://example.com/tags/if%E8%AF%AD%E5%8F%A5/"/>
+    
+  </entry>
   
   <entry>
     <title>java swing还值不值得我们学习？（附经典小程序集合带部分源码）</title>

@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>使用Maven工具，报错 Cannot change version of project facet Dynamic Web Module to 3.0 解决 | Hexo</title>
-  <meta name="keywords" content=" maven ">
-  <meta name="description" content="使用Maven工具，报错 Cannot change version of project facet Dynamic Web Module to 3.0 解决 | Hexo">
+  <title>if语句 | Hexo</title>
+  <meta name="keywords" content=" if语句 ">
+  <meta name="description" content="if语句 | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="About">
@@ -711,9 +711,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-使用Maven工具，报错-Cannot-change-version-of-project-facet-Dynamic-Web-Module-to-3-0-解决" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-if语句" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">使用Maven工具，报错 Cannot change version of project facet Dynamic Web Module to 3.0 解决</h1>
+        <h1 class="article-title">if语句</h1>
     
     <div class="article-meta">
         
@@ -723,9 +723,9 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Java">Java</a> > 
+            <a  data-rel="python">python</a> > 
             
-            <a  data-rel="Java&lt;---&gt;错误日志">错误日志</a>
+            <a  data-rel="python&lt;---&gt;编程知识">编程知识</a>
             
         </span>
         
@@ -733,19 +733,19 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color1">maven</a>
+            <a class="color5">if语句</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2022-02-12 15:34:22'>2022-02-12 15:17</time>
+            发布时间 : <time class="date" title='最后更新: 2022-02-12 22:02:58'>2022-02-12 21:00</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:389</span>
+        <span>字数:254</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -775,7 +775,7 @@
     
     <div class="toc-ref">
     
-        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E7%9B%B8%E7%AD%89%EF%BC%88-%EF%BC%89%EF%BC%8C%E5%88%A4%E6%96%AD%E4%B8%8D%E7%9B%B8%E7%AD%89%EF%BC%88%EF%BC%81-%EF%BC%89"><span class="toc-text">判断是否相等（&#x3D;&#x3D;），判断不相等（！&#x3D;）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E7%89%B9%E5%AE%9A%E5%80%BC%E6%98%AF%E5%90%A6%E5%8C%85%E5%90%AB%E5%9C%A8%E5%88%97%E8%A1%A8%E4%B8%AD%EF%BC%88in%EF%BC%89"><span class="toc-text">判断特定值是否包含在列表中（in）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84if%E8%AF%AD%E5%8F%A5"><span class="toc-text">简单的if语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#if-else%E8%AF%AD%E5%8F%A5"><span class="toc-text">if-else语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#if-elif-else%E8%AF%AD%E5%8F%A5"><span class="toc-text">if-elif-else语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#if%E4%B8%8E%E5%88%97%E8%A1%A8%E7%BB%93%E5%90%88"><span class="toc-text">if与列表结合</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -792,60 +792,56 @@
     <div class="article-entry" itemprop="articleBody">
       
         <!--  python - Java - 前端 - 工具 - 数据库 - 日志 -->
-<ul>
-<li>基本有这些类型：</li>
-</ul>
-<pre><code>Cannot change version of project facet Dynamic Web Module to 3.0.
-
-Java compiler level does not match the version of the installed Java project facet.
-
-One or more constraints have not been satisfied.
-
-Project configuration is not up-to-date with pom.xml. Select: Maven-&gt;Update Project... from the project context menu or use Quick Fix.
-
-Dynamic Web Module 3.0 requires Java 1.6 or newer.
-
-Java compiler level does not match the version of the installed Java project face
+<h3 id="判断是否相等（-），判断不相等（！-）"><a href="#判断是否相等（-），判断不相等（！-）" class="headerlink" title="判断是否相等（==），判断不相等（！=）"></a>判断是否相等（==），判断不相等（！=）</h3><ol>
+<li>区分大小写</li>
+<li>and表示且（条件必须都满足），or表示或（只要满足一个条件）</li>
+</ol>
+<h3 id="判断特定值是否包含在列表中（in）"><a href="#判断特定值是否包含在列表中（in）" class="headerlink" title="判断特定值是否包含在列表中（in）"></a>判断特定值是否包含在列表中（in）</h3><pre><code>a=[&#39;2&#39;,&#39;a&#39;]
+if(&#39;a&#39; in a):
+    print(&#39;在&#39;)
 </code></pre>
-<ul>
-<li><p>是maven项目在eclipse里以web项目部署出错，转化版本失败。Dynamic Web Module版本不对，或者java版本不对。在这个时候，据查阅，只需要改3个地方就可以完美解决这个问题。</p>
+<h3 id="简单的if语句"><a href="#简单的if语句" class="headerlink" title="简单的if语句"></a>简单的if语句</h3><pre><code>age=18
+if(age&gt;=19):
+    print(&#39;true&#39;)
+</code></pre>
+<h3 id="if-else语句"><a href="#if-else语句" class="headerlink" title="if-else语句"></a>if-else语句</h3><pre><code>a=[&#39;2&#39;,&#39;a&#39;]
+if(&#39;b&#39; in a):
+    print(&#39;在&#39;)
+else:
+    print(&#39;不在&#39;)
+</code></pre>
+<h3 id="if-elif-else语句"><a href="#if-elif-else语句" class="headerlink" title="if-elif-else语句"></a>if-elif-else语句</h3><pre><code>a=[&#39;2&#39;,&#39;a&#39;]
+if(&#39;b&#39; in a):
+    print(&#39;b在其中&#39;)
+elif(&#39;c&#39; in a):
+    print(&#39;c在其中&#39;)
+elif(&#39;c&#39; in a):
+    print(&#39;d在其中&#39;)
+else:
+    print(&#39;bcd都不在其中&#39;)
+</code></pre>
+<h3 id="if与列表结合"><a href="#if与列表结合" class="headerlink" title="if与列表结合"></a>if与列表结合</h3><ol>
+<li><p>检查特殊元素</p>
 </li>
-<li><p>eclipse中打开Navigator文档模式，在windows–show view–Navigator<br><img src="https://s2.loli.net/2022/02/12/DerR7TyamZqpAPX.png" alt="20220212151912"></p>
+<li><p>检查列表是否为空</p>
+<pre><code>a=[]
+if a:
+ print(&#39;非空&#39;)
+else:
+ print(&quot;空&quot;)
+</code></pre>
 </li>
-</ul>
-<p><img src="https://s2.loli.net/2022/02/12/WfodsJpYM2SCKhe.png" alt="20220212151936"></p>
-<ul>
-<li>修改web.xml，src/main/webapp/WEB-INF/web.xml，修改Dynamic Web Module版本。</li>
-</ul>
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;web-app xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; 
-         xmlns=&quot;http://java.sun.com/xml/ns/javaee&quot; 
-         xsi:schemaLocation=&quot;http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd&quot; 
-         id=&quot;schedule-console&quot; version=&quot;3.0&quot;&gt;
-  &lt;display-name&gt;Archetype Created Web Application&lt;/display-name&gt;
-&lt;/web-app&gt;
+<li><p>多个列表配合使用</p>
+<pre><code>a=[&#39;1&#39;,&#39;2&#39;,&#39;3&#39;]
+b=[&#39;3&#39;,&#39;4&#39;]
+for i in b:
+ if(i in a):
+     print(&#39;a中也有&#39;+i)
+ else:
+     print(&#39;a中没有&#39;+i)
 </code></pre>
-<ul>
-<li> 修改pom.xml文件，在bulid里添加java版本依赖。</li>
-</ul>
-<pre><code>&lt;build&gt;
-    &lt;finalName&gt;contentplatform&lt;/finalName&gt;
-    &lt;plugins&gt;  
-        &lt;plugin&gt;  
-            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;  
-            &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;  
-            &lt;version&gt;2.3.2&lt;/version&gt;  
-            &lt;configuration&gt;  
-                &lt;source&gt;1.8&lt;/source&gt;  
-                &lt;target&gt;1.8&lt;/target&gt;  
-            &lt;/configuration&gt;  
-        &lt;/plugin&gt;  
-    &lt;/plugins&gt; 
-  &lt;/build&gt;
-</code></pre>
-<ul>
-<li>右键 – maven – update project…。这个时候基本都会没问题了。有也是小问题，继续修改下java配置即可。</li>
-</ul>
+</li>
+</ol>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论 </span>
