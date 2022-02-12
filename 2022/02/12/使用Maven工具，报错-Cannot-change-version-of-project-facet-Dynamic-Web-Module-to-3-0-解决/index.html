@@ -377,7 +377,7 @@
     </div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="19">
-<input type="hidden" id="yelog_site_word_count" value="4.2k">
+<input type="hidden" id="yelog_site_word_count" value="4.4k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -728,12 +728,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2022-02-12 15:19:49'>2022-02-12 15:17</time>
+            发布时间 : <time class="date" title='最后更新: 2022-02-12 15:34:22'>2022-02-12 15:17</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:268</span>
+        <span>字数:389</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -781,45 +781,60 @@
       
         <!--  python - Java - 前端 - 工具 - 数据库 - 日志 -->
 <ul>
-<li>基本有这些类型：<br>```<br>Cannot change version of project facet Dynamic Web Module to 3.0.</li>
+<li>基本有这些类型：</li>
 </ul>
-<p>Java compiler level does not match the version of the installed Java project facet.</p>
-<p>One or more constraints have not been satisfied.</p>
-<p>Project configuration is not up-to-date with pom.xml. Select: Maven-&gt;Update Project… from the project context menu or use Quick Fix.</p>
-<p>Dynamic Web Module 3.0 requires Java 1.6 or newer.</p>
-<p>Java compiler level does not match the version of the installed Java project face</p>
-<pre><code>
-* 是maven项目在eclipse里以web项目部署出错，转化版本失败。Dynamic Web Module版本不对，或者java版本不对。在这个时候，据查阅，只需要改3个地方就可以完美解决这个问题。
+<pre><code>Cannot change version of project facet Dynamic Web Module to 3.0.
 
-* eclipse中打开Navigator文档模式，在windows--show view--Navigator
-![20220212151912](https://s2.loli.net/2022/02/12/DerR7TyamZqpAPX.png)
+Java compiler level does not match the version of the installed Java project facet.
 
-![20220212151936](https://s2.loli.net/2022/02/12/WfodsJpYM2SCKhe.png)
-* 修改web.xml，src/main/webapp/WEB-INF/web.xml，修改Dynamic Web Module版本。
+One or more constraints have not been satisfied.
+
+Project configuration is not up-to-date with pom.xml. Select: Maven-&gt;Update Project... from the project context menu or use Quick Fix.
+
+Dynamic Web Module 3.0 requires Java 1.6 or newer.
+
+Java compiler level does not match the version of the installed Java project face
 </code></pre>
-<?xml version="1.0" encoding="UTF-8"?>
-<p><web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-         xmlns="http://java.sun.com/xml/ns/javaee" 
-         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" 
-         id="schedule-console" version="3.0"><br>  <display-name>Archetype Created Web Application</display-name><br></web-app></p>
-<pre><code>*  修改pom.xml文件，在bulid里添加java版本依赖。
+<ul>
+<li><p>是maven项目在eclipse里以web项目部署出错，转化版本失败。Dynamic Web Module版本不对，或者java版本不对。在这个时候，据查阅，只需要改3个地方就可以完美解决这个问题。</p>
+</li>
+<li><p>eclipse中打开Navigator文档模式，在windows–show view–Navigator<br><img src="https://s2.loli.net/2022/02/12/DerR7TyamZqpAPX.png" alt="20220212151912"></p>
+</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/02/12/WfodsJpYM2SCKhe.png" alt="20220212151936"></p>
+<ul>
+<li>修改web.xml，src/main/webapp/WEB-INF/web.xml，修改Dynamic Web Module版本。</li>
+</ul>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;web-app xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; 
+         xmlns=&quot;http://java.sun.com/xml/ns/javaee&quot; 
+         xsi:schemaLocation=&quot;http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd&quot; 
+         id=&quot;schedule-console&quot; version=&quot;3.0&quot;&gt;
+  &lt;display-name&gt;Archetype Created Web Application&lt;/display-name&gt;
+&lt;/web-app&gt;
 </code></pre>
-<build>
-    <finalName>contentplatform</finalName>
-    <plugins>  
-        <plugin>  
-            <groupId>org.apache.maven.plugins</groupId>  
-            <artifactId>maven-compiler-plugin</artifactId>  
-            <version>2.3.2</version>  
-            <configuration>  
-                <source>1.8</source>  
-                <target>1.8</target>  
-            </configuration>  
-        </plugin>  
-    </plugins> 
-  </build>
-```
-* 右键 -- maven -- update project...。这个时候基本都会没问题了。有也是小问题，继续修改下java配置即可。
+<ul>
+<li> 修改pom.xml文件，在bulid里添加java版本依赖。</li>
+</ul>
+<pre><code>&lt;build&gt;
+    &lt;finalName&gt;contentplatform&lt;/finalName&gt;
+    &lt;plugins&gt;  
+        &lt;plugin&gt;  
+            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;  
+            &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;  
+            &lt;version&gt;2.3.2&lt;/version&gt;  
+            &lt;configuration&gt;  
+                &lt;source&gt;1.8&lt;/source&gt;  
+                &lt;target&gt;1.8&lt;/target&gt;  
+            &lt;/configuration&gt;  
+        &lt;/plugin&gt;  
+    &lt;/plugins&gt; 
+  &lt;/build&gt;
+</code></pre>
+<ul>
+<li>右键 – maven – update project…。这个时候基本都会没问题了。有也是小问题，继续修改下java配置即可。</li>
+</ul>
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论 </span>
     </div>
