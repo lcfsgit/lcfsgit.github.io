@@ -1,0 +1,301 @@
+<!DOCTYPE html><html lang="zh" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>记录一次云服务器部署环境搭建 | lcf的技术笔记</title><meta name="author" content="lcf"><meta name="copyright" content="lcf"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="记录一次云服务器部署环境搭建需求将sprinboot项目、vue项目部署到云服务器 技术栈：springBoot sprinbSecurity mybatis-plus vue gradle docker nginx  git node jdk 操作系统：Ubuntu 22.04  ssh工具：Tabby 安装必要软件Node和npm从 Ubuntu 软件源安装 Node.js 和 npm在写作的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记录一次云服务器部署环境搭建">
+<meta property="og:url" content="https://lcfsgit.github.io/2023/08/29/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/index.html">
+<meta property="og:site_name" content="lcf的技术笔记">
+<meta property="og:description" content="记录一次云服务器部署环境搭建需求将sprinboot项目、vue项目部署到云服务器 技术栈：springBoot sprinbSecurity mybatis-plus vue gradle docker nginx  git node jdk 操作系统：Ubuntu 22.04  ssh工具：Tabby 安装必要软件Node和npm从 Ubuntu 软件源安装 Node.js 和 npm在写作的">
+<meta property="og:locale">
+<meta property="og:image" content="https://t.mwm.moe/fj/">
+<meta property="article:published_time" content="2023-08-29T05:34:23.000Z">
+<meta property="article:modified_time" content="2023-08-29T05:37:35.267Z">
+<meta property="article:author" content="lcf">
+<meta property="article:tag" content="springboot">
+<meta property="article:tag" content="gradle">
+<meta property="article:tag" content="docker">
+<meta property="article:tag" content="nginx">
+<meta property="article:tag" content="ubuntu">
+<meta property="article:tag" content="vue">
+<meta property="article:tag" content="git">
+<meta property="article:tag" content="node">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://t.mwm.moe/fj/"><link rel="shortcut icon" href="/img/tx.png"><link rel="canonical" href="https://lcfsgit.github.io/2023/08/29/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Error',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '记录一次云服务器部署环境搭建',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-08-29 13:37:35'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/tx.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">21</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">31</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="lcf的技术笔记"><span class="site-name">lcf的技术笔记</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 查询</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">记录一次云服务器部署环境搭建</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-08-29T05:34:23.000Z" title="Created 2023-08-29 13:34:23">2023-08-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-08-29T05:37:35.267Z" title="Updated 2023-08-29 13:37:35">2023-08-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2/">项目部署</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="记录一次云服务器部署环境搭建"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><h2 id="记录一次云服务器部署环境搭建"><a href="#记录一次云服务器部署环境搭建" class="headerlink" title="记录一次云服务器部署环境搭建"></a>记录一次云服务器部署环境搭建</h2><h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p><strong>将sprinboot项目、vue项目部署到云服务器</strong></p>
+<p>技术栈：<code>springBoot sprinbSecurity mybatis-plus vue gradle docker nginx  git node jdk</code></p>
+<p>操作系统：<code>Ubuntu 22.04 </code></p>
+<p>ssh工具：<code>Tabby</code></p>
+<h3 id="安装必要软件"><a href="#安装必要软件" class="headerlink" title="安装必要软件"></a>安装必要软件</h3><h4 id="Node和npm"><a href="#Node和npm" class="headerlink" title="Node和npm"></a>Node和npm</h4><h5 id="从-Ubuntu-软件源安装-Node-js-和-npm"><a href="#从-Ubuntu-软件源安装-Node-js-和-npm" class="headerlink" title="从 Ubuntu 软件源安装 Node.js 和 npm"></a>从 Ubuntu 软件源安装 Node.js 和 npm</h5><p>在写作的时候，包含在 Ubuntu 20.04 软件源中的 Node.js 版本是<code>12.22.9</code>，这是一个长期版本。</p>
+<p>安装非常直接。运行下面的命令更新软件包索引，并且安装 Node.js 和 npm:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install nodejs npm</span><br></pre></td></tr></table></figure>
+
+<p>上面的命令将会安装一系列包，包括编译和安装从 npm 来的本地扩展。</p>
+<p>一旦完成，运行下面的命令，验证安装过程：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root@hecs-296785:~# node -v</span><br><span class="line">v12.22.9</span><br></pre></td></tr></table></figure>
+
+<h4 id="jdk"><a href="#jdk" class="headerlink" title="jdk"></a>jdk</h4><p><strong>1）：官方下载对应的.gz包，这里以jdk-8u181-linux-x64.tar.gz为例</strong></p>
+<p><strong>2）：创建一个目录用于存放解压后的文件，并解压缩到该目录下</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir /usr/lib/jvm</span><br><span class="line">sudo tar -zxvf jdk-8u181-linux-x64.tar.gz -C /usr/lib/jvm</span><br></pre></td></tr></table></figure>
+
+<p><strong>3）：修改环境变量</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<p><strong>4）：文件末尾追加如下内容</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#set oracle jdk environment</span><br><span class="line">export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_181  ## 这里要注意目录要换成自己解压的jdk 目录</span><br><span class="line">export JRE_HOME=$&#123;JAVA_HOME&#125;/jre  </span><br><span class="line">export CLASSPATH=.:$&#123;JAVA_HOME&#125;/lib:$&#123;JRE_HOME&#125;/lib  </span><br><span class="line">export PATH=$&#123;JAVA_HOME&#125;/bin:$PATH  </span><br></pre></td></tr></table></figure>
+
+<p><strong>5）：使环境变量生效</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<p><strong>8）：测试是否安装成功</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<p><strong>1）：官方下载对应的.gz包，这里以jdk-8u181-linux-x64.tar.gz为例</strong></p>
+<p><strong>2）：创建一个目录用于存放解压后的文件，并解压缩到该目录下</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir /usr/lib/jvm</span><br><span class="line">sudo tar -zxvf jdk-8u181-linux-x64.tar.gz -C /usr/lib/jvm</span><br></pre></td></tr></table></figure>
+
+<p><strong>3）：修改环境变量</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<p><strong>4）：文件末尾追加如下内容</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#set oracle jdk environment</span><br><span class="line">export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_181  ## 这里要注意目录要换成自己解压的jdk 目录</span><br><span class="line">export JRE_HOME=$&#123;JAVA_HOME&#125;/jre  </span><br><span class="line">export CLASSPATH=.:$&#123;JAVA_HOME&#125;/lib:$&#123;JRE_HOME&#125;/lib  </span><br><span class="line">export PATH=$&#123;JAVA_HOME&#125;/bin:$PATH  </span><br></pre></td></tr></table></figure>
+
+<p><strong>5）：使环境变量生效</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<p><strong>8）：测试是否安装成功</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+
+<h4 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h4><p>Nginx 在默认的 Ubuntu 源仓库中可用。想要安装它，运行下面的命令：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install nginx</span><br></pre></td></tr></table></figure>
+
+<p>一旦安装完成，Nginx 将会自动被启动。你可以运行下面的命令来验证它：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl status nginx</span><br></pre></td></tr></table></figure>
+
+<h5 id="配置防火墙"><a href="#配置防火墙" class="headerlink" title="配置防火墙"></a>配置防火墙</h5><p>现在你已经在你的服务器上安装和运行了 Nginx，你需要确保你的防火墙被配置好，允许流量通过 HTTP（<code>80</code>）和 HTTPS（<code>443</code>）端口。假设你正在使用<code>UFW</code>,你可以做的是启用 ‘Nginx Full’ profile，它包含了这两个端口：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow &#x27;Nginx Full&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>想要验证状态，输入：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw status</span><br></pre></td></tr></table></figure>
+
+<h5 id="验证安装"><a href="#验证安装" class="headerlink" title="验证安装"></a>验证安装</h5><p>想要测试你的新 Nginx 安装，在你的浏览器中打开<code>http://YOUR_IP</code>，你应该可以看到默认的 Nginx 加载页面，</p>
+<h6 id="Nginx-配置文件结构以及最佳实践"><a href="#Nginx-配置文件结构以及最佳实践" class="headerlink" title="Nginx 配置文件结构以及最佳实践"></a>Nginx 配置文件结构以及最佳实践</h6><ul>
+<li>所有的 Nginx 配置文件都在<code>/etc/nginx/</code>目录下。</li>
+<li>主要的 Nginx 配置文件是<code>/etc/nginx/nginx.conf</code>。</li>
+<li>为每个域名创建一个独立的配置文件，便于维护服务器。你可以按照需要定义任意多的 block 文件。</li>
+<li>Nginx 服务器配置文件被储存在<code>/etc/nginx/sites-available</code>目录下。在<code>/etc/nginx/sites-enabled</code>目录下的配置文件都将被 Nginx 使用。</li>
+<li>最佳推荐是使用标准的命名方式。例如，如果你的域名是<code>mydomain.com</code>，那么配置文件应该被命名为<code>/etc/nginx/sites-available/mydomain.com.conf</code></li>
+<li>如果你在域名服务器配置块中有可重用的配置段，把这些配置段摘出来，做成一小段可重用的配置。</li>
+<li>Nginx 日志文件(access.log 和 error.log)定位在<code>/var/log/nginx/</code>目录下。推荐为每个服务器配置块，配置一个不同的<code>access</code>和<code>error</code>。</li>
+<li>你可以将你的网站根目录设置在任何你想要的地方。最常用的网站根目录位置包括：</li>
+<li><ul>
+<li><code>/home/&lt;user_name&gt;/&lt;site_name&gt;</code></li>
+<li><code>/var/www/&lt;site_name&gt;</code></li>
+<li><code>/var/www/html/&lt;site_name&gt;</code></li>
+<li><code>/opt/&lt;site_name&gt;</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="Gradle"><a href="#Gradle" class="headerlink" title="Gradle"></a>Gradle</h4><h5 id="下载gradle"><a href="#下载gradle" class="headerlink" title="下载gradle"></a>下载gradle</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://downloads.gradle.org/distributions/gradle-7.6.1-bin.zip /tmp</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo unzip -d /opt/gradle /tmp/gradle-7.6.1-bin.zip</span><br></pre></td></tr></table></figure>
+
+<h5 id="设置环境变量"><a href="#设置环境变量" class="headerlink" title="设置环境变量"></a>设置环境变量</h5><p>需要配置PATH环境变量以包含Gradle bin目录。使用你喜欢的文本编辑器，然后在<code>/etc/profile.d</code>目录中创建一个名为<code>gradle.sh</code>的新文件，使用vim创建文件&#x2F;etc&#x2F;profile.d&#x2F;gradle.sh，粘贴以下内容gradle.sh文件中。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/profile.d/gradle.sh</span><br><span class="line"></span><br><span class="line">//添加</span><br><span class="line"><span class="built_in">export</span> GRADLE_HOME=/opt/gradle/gradle-7.5.1</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$&#123;GRADLE_HOME&#125;</span>/bin:<span class="variable">$&#123;PATH&#125;</span></span><br><span class="line"></span><br><span class="line">sudo <span class="built_in">chmod</span> +x /etc/profile.d/gradle.sh</span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> /etc/profile.d/gradle.sh</span><br><span class="line"></span><br><span class="line">gradle -v</span><br></pre></td></tr></table></figure>
+
+<h3 id="打包-部署后端项目"><a href="#打包-部署后端项目" class="headerlink" title="打包&amp;部署后端项目"></a>打包&amp;部署后端项目</h3><h4 id="gradle配置文件"><a href="#gradle配置文件" class="headerlink" title="gradle配置文件"></a>gradle配置文件</h4><p><strong>gradle 中的sourceCompatibility 与 targetCompatibility 的区别</strong></p>
+<p>sourceCompatibility:指定编译编译.java文件的jdk版本；targetCompatibility：确保class文件与targetCompatibility指定版本，或者更新的java虚拟机兼容，</p>
+<p>有这么几个原则，是不能违背的，总结起来就是这样</p>
+<p>代码用的语言特性对应的JavaVersion<br>≦ sourceCompatibility<br>≦ targetCompatibility<br>≦ Gradle使用的JavaVersion<br>≦ 客户端环境的JavaVersion</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">plugins &#123;</span><br><span class="line">    id &#x27;org.springframework.boot&#x27; version &#x27;2.6.11&#x27;</span><br><span class="line">    id &#x27;io.spring.dependency-management&#x27; version &#x27;1.0.13.RELEASE&#x27;</span><br><span class="line">    id &#x27;java&#x27;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">group = &#x27;com.lcf&#x27;</span><br><span class="line">//version = &#x27;0.0.1-SNAPSHOT&#x27;</span><br><span class="line">sourceCompatibility = &quot;17&quot;</span><br><span class="line"></span><br><span class="line">repositories &#123;</span><br><span class="line">    mavenCentral()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bootJar &#123;</span><br><span class="line">    archivesBaseName = &#x27;blue-server&#x27; // jar包名</span><br><span class="line">    manifest &#123;</span><br><span class="line">        attributes &quot;Manifest-Version&quot;: 1.0,</span><br><span class="line">                &#x27;Start-Class&#x27;: &#x27;com.lcf.BlueApplication&#x27; //  springboot项目的启动类</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">    implementation &#x27;org.springframework.boot:spring-boot-starter&#x27;</span><br><span class="line"></span><br><span class="line">    implementation group: &#x27;org.springframework.boot&#x27;, name: &#x27;spring-boot-starter-web&#x27;, version: &#x27;2.7.5&#x27;</span><br><span class="line">    testImplementation &#x27;org.springframework.boot:spring-boot-starter-test&#x27;</span><br><span class="line">    implementation group: &#x27;mysql&#x27;, name: &#x27;mysql-connector-java&#x27;, version: &#x27;8.0.21&#x27;</span><br><span class="line">    implementation group: &#x27;com.baomidou&#x27;, name: &#x27;mybatis-plus-boot-starter&#x27;, version: &#x27;3.5.2&#x27;</span><br><span class="line">    implementation group: &#x27;org.springframework.boot&#x27;, name: &#x27;spring-boot-starter-security&#x27;, version: &#x27;2.7.3&#x27;</span><br><span class="line">    implementation group: &#x27;com.baomidou&#x27;, name: &#x27;mybatis-plus-generator&#x27;, version: &#x27;3.3.0&#x27;</span><br><span class="line"></span><br><span class="line">    implementation group: &#x27;org.apache.velocity&#x27;, name: &#x27;velocity-engine-core&#x27;, version: &#x27;2.3&#x27;</span><br><span class="line"></span><br><span class="line">    compileOnly group: &#x27;org.projectlombok&#x27;, name: &#x27;lombok&#x27;, version: &#x27;1.18.24&#x27;</span><br><span class="line"></span><br><span class="line">    implementation group: &#x27;io.jsonwebtoken&#x27;, name: &#x27;jjwt-api&#x27;, version: &#x27;0.10.5&#x27;</span><br><span class="line"></span><br><span class="line">    implementation group: &#x27;io.jsonwebtoken&#x27;, name: &#x27;jjwt&#x27;, version: &#x27;0.9.1&#x27;</span><br><span class="line"></span><br><span class="line">    implementation group: &#x27;com.auth0&#x27;, name: &#x27;java-jwt&#x27;, version: &#x27;3.19.2&#x27;</span><br><span class="line"></span><br><span class="line">    // https://mvnrepository.com/artifact/com.alibaba.fastjson2/fastjson2</span><br><span class="line">    implementation group: &#x27;com.alibaba.fastjson2&#x27;, name: &#x27;fastjson2&#x27;, version: &#x27;2.0.20&#x27;</span><br><span class="line"></span><br><span class="line">    // https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api</span><br><span class="line">    implementation group: &#x27;javax.xml.bind&#x27;, name: &#x27;jaxb-api&#x27;, version: &#x27;2.3.1&#x27;</span><br><span class="line"></span><br><span class="line">    implementation &#x27;org.hyperledger.fabric:fabric-gateway:1.2.2&#x27;</span><br><span class="line">    compileOnly &#x27;io.grpc:grpc-api:1.54.1&#x27;</span><br><span class="line">    runtimeOnly &#x27;io.grpc:grpc-netty-shaded:1.54.1&#x27;</span><br><span class="line">    implementation &#x27;com.google.code.gson:gson:2.10.1&#x27;</span><br><span class="line"></span><br><span class="line">    // https://mvnrepository.com/artifact/cn.hutool/hutool-all</span><br><span class="line">    implementation &#x27;cn.hutool:hutool-all:5.8.21&#x27;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test &#123;</span><br><span class="line">    useJUnitPlatform()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="定制dockerfile镜像"><a href="#定制dockerfile镜像" class="headerlink" title="定制dockerfile镜像"></a>定制dockerfile镜像</h4><p>docker镜像学习文档<code>https://docker-practice.github.io/zh-cn/image/</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">FROM openjdk:8</span><br><span class="line">MAINTAINER lcf</span><br><span class="line">ADD blue-server.jar blue-server.jar</span><br><span class="line">EXPOSE 8080</span><br><span class="line">ENTRYPOINT [<span class="string">&quot;java&quot;</span>,<span class="string">&quot;-jar&quot;</span>,<span class="string">&quot;blue-server.jar&quot;</span>]</span><br></pre></td></tr></table></figure>
+
+<h4 id="定制项目部署脚本"><a href="#定制项目部署脚本" class="headerlink" title="定制项目部署脚本"></a>定制项目部署脚本</h4><h5 id="后端项目部署之前要做的："><a href="#后端项目部署之前要做的：" class="headerlink" title="后端项目部署之前要做的："></a>后端项目部署之前要做的：</h5><ul>
+<li>更新仓库代码</li>
+<li>打包最新代码</li>
+<li>重新构建docker镜像</li>
+<li>删除先前的docker容器</li>
+<li>重新构建docker容器</li>
+<li>创建最新的docker容器</li>
+<li>输出执行成功提示信息</li>
+</ul>
+<p>bash脚本内容如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">cd blue-server</span><br><span class="line">gradle bootJar</span><br><span class="line">cd build/libs</span><br><span class="line">docker build -t blue-server .</span><br><span class="line">docker stop blue-server</span><br><span class="line">docker rm blue-server</span><br><span class="line">docker run -d --restart=always --name blue-server -p 8080:8080  blue-server</span><br><span class="line">echo &#x27;sucessful----------------------------------------------------------------------------------------------------------------------------------&#x27;</span><br></pre></td></tr></table></figure>
+
+<h5 id="前端项目部署需要做的"><a href="#前端项目部署需要做的" class="headerlink" title="前端项目部署需要做的"></a>前端项目部署需要做的</h5><ul>
+<li>更新仓库代码</li>
+<li>打包最新的代码文件</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>作者: </span><span class="post-copyright-info"><a href="https://lcfsgit.github.io">lcf</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>链接: </span><span class="post-copyright-info"><a href="https://lcfsgit.github.io/2023/08/29/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">https://lcfsgit.github.io/2023/08/29/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/springboot/">springboot</a><a class="post-meta__tags" href="/tags/gradle/">gradle</a><a class="post-meta__tags" href="/tags/docker/">docker</a><a class="post-meta__tags" href="/tags/nginx/">nginx</a><a class="post-meta__tags" href="/tags/ubuntu/">ubuntu</a><a class="post-meta__tags" href="/tags/vue/">vue</a><a class="post-meta__tags" href="/tags/git/">git</a><a class="post-meta__tags" href="/tags/node/">node</a></div><div class="post_share"><div class="social-share" data-image="https://t.mwm.moe/fj/" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/08/22/%E8%A7%A3%E5%86%B3docker%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%97%B6%E9%97%B4%E4%B8%8D%E4%B8%80%E8%87%B4%E9%97%AE%E9%A2%98/" title="解决docker与服务器时间不一致问题"><img class="cover" src="https://api.vvhan.com/api/acgimg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一页</div><div class="next_info">解决docker与服务器时间不一致问题</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2023/08/22/springboot+gradle+docker+nginx%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E5%88%B0ubuntu%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" title="springboot+gradle+docker+nginx项目部署到ubuntu云服务器.md"><img class="cover" src="https://t.mwm.moe/fj/" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-22</div><div class="title">springboot+gradle+docker+nginx项目部署到ubuntu云服务器.md</div></div></a></div><div><a href="/2023/08/19/%E6%AF%8F%E6%97%A5%E6%80%BB%E7%BB%93-8-10/" title="每日总结-8.10"><img class="cover" src="https://api.dujin.org/pic/fengjing" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-19</div><div class="title">每日总结-8.10</div></div></a></div><div><a href="/2023/08/22/%E8%A7%A3%E5%86%B3docker%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%97%B6%E9%97%B4%E4%B8%8D%E4%B8%80%E8%87%B4%E9%97%AE%E9%A2%98/" title="解决docker与服务器时间不一致问题"><img class="cover" src="https://api.vvhan.com/api/acgimg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-22</div><div class="title">解决docker与服务器时间不一致问题</div></div></a></div><div><a href="/2023/08/21/windows%E4%B8%8B%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E4%BB%A3%E7%90%86/" title="windows下静态资源代理"><img class="cover" src="https://t.mwm.moe/pc/" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-21</div><div class="title">windows下静态资源代理</div></div></a></div><div><a href="/2023/08/21/%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/" title="反向代理"><img class="cover" src="https://t.mwm.moe/pc/" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-21</div><div class="title">反向代理</div></div></a></div><div><a href="/2023/08/21/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="负载均衡"><img class="cover" src="https://api.vvhan.com/api/acgimg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-21</div><div class="title">负载均衡</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/tx.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">lcf</div><div class="author-info__description">把未来可期托付给自己</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">21</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">31</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-number">1.</span> <span class="toc-text">记录一次云服务器部署环境搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9C%80%E6%B1%82"><span class="toc-number">1.1.</span> <span class="toc-text">需求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%BF%85%E8%A6%81%E8%BD%AF%E4%BB%B6"><span class="toc-number">1.2.</span> <span class="toc-text">安装必要软件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Node%E5%92%8Cnpm"><span class="toc-number">1.2.1.</span> <span class="toc-text">Node和npm</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BB%8E-Ubuntu-%E8%BD%AF%E4%BB%B6%E6%BA%90%E5%AE%89%E8%A3%85-Node-js-%E5%92%8C-npm"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">从 Ubuntu 软件源安装 Node.js 和 npm</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#jdk"><span class="toc-number">1.2.2.</span> <span class="toc-text">jdk</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#nginx"><span class="toc-number">1.2.3.</span> <span class="toc-text">nginx</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E9%98%B2%E7%81%AB%E5%A2%99"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">配置防火墙</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">验证安装</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#Nginx-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84%E4%BB%A5%E5%8F%8A%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5"><span class="toc-number">1.2.3.2.1.</span> <span class="toc-text">Nginx 配置文件结构以及最佳实践</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Gradle"><span class="toc-number">1.2.4.</span> <span class="toc-text">Gradle</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BDgradle"><span class="toc-number">1.2.4.1.</span> <span class="toc-text">下载gradle</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">1.2.4.2.</span> <span class="toc-text">设置环境变量</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%93%E5%8C%85-%E9%83%A8%E7%BD%B2%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.3.</span> <span class="toc-text">打包&amp;部署后端项目</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#gradle%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">1.3.1.</span> <span class="toc-text">gradle配置文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E5%88%B6dockerfile%E9%95%9C%E5%83%8F"><span class="toc-number">1.3.2.</span> <span class="toc-text">定制dockerfile镜像</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E5%88%B6%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E8%84%9A%E6%9C%AC"><span class="toc-number">1.3.3.</span> <span class="toc-text">定制项目部署脚本</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E4%B9%8B%E5%89%8D%E8%A6%81%E5%81%9A%E7%9A%84%EF%BC%9A"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">后端项目部署之前要做的：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E9%9C%80%E8%A6%81%E5%81%9A%E7%9A%84"><span class="toc-number">1.3.3.2.</span> <span class="toc-text">前端项目部署需要做的</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最近更新</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/08/29/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" title="记录一次云服务器部署环境搭建">记录一次云服务器部署环境搭建</a><time datetime="2023-08-29T05:34:23.000Z" title="Created 2023-08-29 13:34:23">2023-08-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/08/22/%E8%A7%A3%E5%86%B3docker%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%97%B6%E9%97%B4%E4%B8%8D%E4%B8%80%E8%87%B4%E9%97%AE%E9%A2%98/" title="解决docker与服务器时间不一致问题">解决docker与服务器时间不一致问题</a><time datetime="2023-08-22T11:36:37.000Z" title="Created 2023-08-22 19:36:37">2023-08-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/08/22/springboot+gradle+docker+nginx%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E5%88%B0ubuntu%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" title="springboot+gradle+docker+nginx项目部署到ubuntu云服务器.md">springboot+gradle+docker+nginx项目部署到ubuntu云服务器.md</a><time datetime="2023-08-22T11:32:29.000Z" title="Created 2023-08-22 19:32:29">2023-08-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/08/22/%E4%BD%BF%E7%94%A8Vanta-js%E5%AE%9E%E7%8E%B0%E5%8A%A8%E6%80%81%E8%83%8C%E6%99%AF/" title="使用Vanta.js实现动态背景">使用Vanta.js实现动态背景</a><time datetime="2023-08-22T11:24:05.000Z" title="Created 2023-08-22 19:24:05">2023-08-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/08/22/%E5%B0%86%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6%E9%83%A8%E7%BD%B2%E5%88%B0%E9%80%9A%E9%81%93/" title="将智能合约部署到通道">将智能合约部署到通道</a><time datetime="2023-08-22T11:17:41.000Z" title="Created 2023-08-22 19:17:41">2023-08-22</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By lcf</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="Toggle Between Traditional Chinese And Simplified Chinese">簡</button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">查询</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
