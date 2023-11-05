@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>机器学习案例-鸢尾花分类</title>
+      <link href="/2023/11/05/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%A1%88%E4%BE%8B-%E9%B8%A2%E5%B0%BE%E8%8A%B1%E5%88%86%E7%B1%BB/"/>
+      <url>/2023/11/05/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%A1%88%E4%BE%8B-%E9%B8%A2%E5%B0%BE%E8%8A%B1%E5%88%86%E7%B1%BB/</url>
+      
+        <content type="html"><![CDATA[<h4 id="案例简介"><a href="#案例简介" class="headerlink" title="案例简介"></a>案例简介</h4><p>使用<strong>Sklearn-learn</strong>机器学习模块提供的鸢尾花数据集</p><h4 id="案例代码"><a href="#案例代码" class="headerlink" title="案例代码"></a>案例代码</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_iris</span><br><span class="line"></span><br><span class="line"><span class="comment">#将数据分为训练集和测试集，训练鞋用于训练模型，测试集用户评估模型的性能，使用train_test_split（），将random——state设置随机值，可保证每次分的训练集和测试集数据比例一致</span></span><br><span class="line">iris_dataset=load_iris()</span><br><span class="line">X_train,X_test,Y_train,Y_test = train_test_split(iris_dataset[<span class="string">&#x27;data&#x27;</span>],iris_dataset[<span class="string">&#x27;target&#x27;</span>],random_state=<span class="number">0</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;X_train:&#123;&#125;&quot;</span>.<span class="built_in">format</span>(X_train[:<span class="number">10</span>]))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Y_train:&#123;&#125;&quot;</span>.<span class="built_in">format</span>(Y_train[:<span class="number">10</span>]))</span><br><span class="line"></span><br><span class="line"><span class="comment">#使用k近邻算法训练模型，需要实例化一个算法对象;n_neighbors为传入的k值，1表示只和最近的一个邻居比较；fit（）表示训练模型</span></span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line">knn= KNeighborsClassifier(n_neighbors=<span class="number">1</span>)</span><br><span class="line">knn.fit(X_train,Y_train)</span><br><span class="line"></span><br><span class="line"><span class="comment">#模型构件好后，新构建一个花的数据点，进行预测</span></span><br><span class="line">new_iris=np.array([[<span class="number">5</span>,<span class="number">2.9</span>,<span class="number">1</span>,<span class="number">0.2</span>]])</span><br><span class="line">prediction=knn.predict(new_iris)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;prediction_result:&#123;&#125;&quot;</span>.<span class="built_in">format</span>(prediction))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;prediction_result_tartget_name:&#123;&#125;&quot;</span>.<span class="built_in">format</span>(iris_dataset[<span class="string">&#x27;target_names&#x27;</span>][prediction]))</span><br><span class="line"></span><br><span class="line"><span class="comment">#使用score（）测试模型的精度</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;test_score:&#123;&#125;&quot;</span>.<span class="built_in">format</span>(knn.score(X_test,Y_test)))</span><br></pre></td></tr></table></figure><h4 id="训练结果"><a href="#训练结果" class="headerlink" title="训练结果"></a>训练结果</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">prediction_result:[0]</span><br><span class="line">prediction_result_tartget_name:[&#x27;setosa&#x27;]</span><br></pre></td></tr></table></figure><h4 id="模型精度"><a href="#模型精度" class="headerlink" title="模型精度"></a>模型精度</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test_score:0.9736842105263158</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 机器学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> K-近邻算法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>每日设计模式-适配器</title>
       <link href="/2023/11/03/%E6%AF%8F%E6%97%A5%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E9%80%82%E9%85%8D%E5%99%A8/"/>
       <url>/2023/11/03/%E6%AF%8F%E6%97%A5%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E9%80%82%E9%85%8D%E5%99%A8/</url>
