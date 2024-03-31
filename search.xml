@@ -4,6 +4,58 @@
   
     
     <entry>
+      <title>stream流基础</title>
+      <link href="/2024/03/31/stream%E6%B5%81%E5%9F%BA%E7%A1%80/"/>
+      <url>/2024/03/31/stream%E6%B5%81%E5%9F%BA%E7%A1%80/</url>
+      
+        <content type="html"><![CDATA[<h4 id="测试数据"><a href="#测试数据" class="headerlink" title="测试数据"></a>测试数据</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; a=<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(</span><br><span class="line">        Arrays.asList(<span class="string">&quot;a&quot;</span>,<span class="string">&quot;b&quot;</span>,<span class="string">&quot;c&quot;</span>,<span class="string">&quot;d&quot;</span>,<span class="string">&quot;e&quot;</span>,<span class="string">&quot;f&quot;</span>,<span class="string">&quot;g&quot;</span>,<span class="string">&quot;h&quot;</span>,<span class="string">&quot;i&quot;</span>,<span class="string">&quot;j&quot;</span>,<span class="string">&quot;k&quot;</span>,<span class="string">&quot;l&quot;</span>,<span class="string">&quot;m&quot;</span>,<span class="string">&quot;n&quot;</span>,<span class="string">&quot;o&quot;</span>,<span class="string">&quot;p&quot;</span>,<span class="string">&quot;q&quot;</span>,<span class="string">&quot;r&quot;</span>,<span class="string">&quot;s&quot;</span>,<span class="string">&quot;t&quot;</span>,<span class="string">&quot;u&quot;</span>,<span class="string">&quot;v&quot;</span>,<span class="string">&quot;w&quot;</span>,<span class="string">&quot;x&quot;</span>,<span class="string">&quot;y&quot;</span>,<span class="string">&quot;z&quot;</span>)</span><br><span class="line">);</span><br><span class="line"> String[] arr=<span class="keyword">new</span> <span class="title class_">String</span>[]</span><br><span class="line">         &#123;<span class="string">&quot;a&quot;</span>,<span class="string">&quot;b&quot;</span>,<span class="string">&quot;c&quot;</span>&#125;;</span><br><span class="line"> String str=<span class="string">&quot;a/b/c&quot;</span>;</span><br></pre></td></tr></table></figure><h4 id="流的创建"><a href="#流的创建" class="headerlink" title="流的创建"></a>流的创建</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Stream&lt;String&gt;newStream= Stream.of(<span class="string">&quot;a&quot;</span>,<span class="string">&quot;b&quot;</span>,<span class="string">&quot;c&quot;</span>);</span><br><span class="line">Stream&lt;String&gt;arrStream=Arrays.stream(arr);</span><br><span class="line">Stream&lt;String&gt;arrsubStream=Arrays.stream(arr,<span class="number">1</span>,<span class="number">3</span>);</span><br><span class="line">Stream&lt;String&gt;patterStream=Pattern.compile(<span class="string">&quot;a/b/c&quot;</span>).splitAsStream(str);</span><br><span class="line">Stream&lt;String&gt;strStream=Arrays.stream(str.split(<span class="string">&quot;/&quot;</span>));</span><br><span class="line">Stream&lt;String&gt;emptyStream=Stream.empty();</span><br><span class="line">Stream&lt;String&gt;echoStream=Stream.generate(()-&gt; <span class="string">&quot;echo&quot;</span>);</span><br><span class="line">Stream&lt;Double&gt;randomStream=Stream.generate(Double m-&gt;&#123;</span><br><span class="line">     <span class="keyword">return</span>  Math.random();</span><br><span class="line">&#125;);</span><br><span class="line">Stream&lt;Double&gt;iterateStream=Stream.iterate(<span class="number">0.5</span>,p-&gt;p.compareTo(<span class="number">10.0</span>)&lt;<span class="number">0</span>, p-&gt;p+p);</span><br></pre></td></tr></table></figure><h4 id="流的转化"><a href="#流的转化" class="headerlink" title="流的转化"></a>流的转化</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">String[] c=<span class="keyword">new</span> <span class="title class_">String</span>[]&#123;<span class="string">&quot;a&quot;</span>,<span class="string">&quot;b&quot;</span>,<span class="string">&quot;c&quot;</span>&#125;;</span><br><span class="line">String[] d=<span class="keyword">new</span> <span class="title class_">String</span>[]&#123;<span class="string">&quot;a&quot;</span>,<span class="string">&quot;b&quot;</span>,<span class="string">&quot;c&quot;</span>&#125;;</span><br><span class="line">Stream.concat(Arrays.stream(d),Arrays.stream(c));</span><br><span class="line">arrStream.filter(aa-&gt;aa.startsWith(<span class="string">&quot;a&quot;</span>)).map(String::toUpperCase).forEach(x-&gt;System.out.println(x));</span><br><span class="line">arrStream.filter(aaaa-&gt;aaaa.startsWith(<span class="string">&quot;a&quot;</span>)).map(x-&gt;x.toUpperCase()).forEach(x-&gt;System.out.println(x));</span><br><span class="line"></span><br><span class="line">Arrays.stream(c,<span class="number">1</span>,<span class="number">3</span>).flatMap(p-&gt;Arrays.stream(d));</span><br><span class="line">iterateStream.limit(<span class="number">5</span>).collect(Collectors.toList());</span><br><span class="line">iterateStream.limit(<span class="number">5</span>).skip(<span class="number">1</span>);</span><br><span class="line">iterateStream.limit(<span class="number">5</span>).skip(<span class="number">1</span>).takeWhile(p-&gt;p&lt;<span class="number">5</span>);</span><br><span class="line">iterateStream.limit(<span class="number">5</span>).skip(<span class="number">1</span>).takeWhile(p-&gt;p&lt;<span class="number">5</span>).dropWhile(p-&gt;p&lt;<span class="number">3</span>);</span><br><span class="line">iterateStream.limit(<span class="number">5</span>).skip(<span class="number">1</span>).takeWhile(p-&gt;p&lt;<span class="number">5</span>).dropWhile(p-&gt;p&lt;<span class="number">3</span>).peek(x-&gt;System.out.println(<span class="string">&quot;peek&quot;</span>+x));</span><br><span class="line">iterateStream.limit(<span class="number">5</span>).skip(<span class="number">1</span>).takeWhile(p-&gt;p&lt;<span class="number">5</span>).dropWhile(p-&gt;p&lt;<span class="number">3</span>).peek(x-&gt;System.out.println(<span class="string">&quot;peek&quot;</span>+x)).sorted()</span><br><span class="line">;</span><br><span class="line">echoStream.distinct().peek(x-&gt;System.out.println(<span class="string">&quot;peek&quot;</span>+x));</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> java进阶 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> stream </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Personalized Federated Recommendation via Joint Representation Learning, User Clustering, and Model Adaptation</title>
+      <link href="/2023/12/26/Personalized-Federated-Recommendation-via-Joint-Representation-Learning-User-Clustering-and-Model-Adaptation/"/>
+      <url>/2023/12/26/Personalized-Federated-Recommendation-via-Joint-Representation-Learning-User-Clustering-and-Model-Adaptation/</url>
+      
+        <content type="html"><![CDATA[<p>文章针对其他联邦学习框架存在的问题，包括：</p><p>中央服务器需要和所有节点进行通信，对于计算性能较差的节点性能负担大，整个框架的通信成本高</p><p>各个节点共用一个全局模型，未考虑节点的个性化需求（非独立同分布的用户任务数据）</p><p>提出了对应的解决方案（PerFedRec framework)：</p><p>框架由两部分组成，user-side 端到端本地推荐网络和server-side聚合器组成。</p><p>user-side 端到端本地推荐网络分为三部分，负责原始数据编码的Raw Embedding Model、Local GNN Model（图卷积网络，文章实验中使用了Light GCN）、Personalized Prediction Module（生成预测模型）</p><p>在Raw Embedding Model中，文章基于用户属性信息、item 信息，使用attention机制，将用户与item的协作信息结合（文章未详细说明结合信息，猜测根据接单频次，对不同类型任务进行了降权重等操作），训练过程中，用户embeddings本地存储，item embeddings全局共享。</p><p>在Local GNN Model中，文章将用户embeddings和这个用户协作过的item的ID加密并上传到服务器，服务器将信息发送给同样与该item交互过的用户（其中所谓的ID具体用作何用，未解释，文章只提到采用与Federated Social Recommendation with Graph Neural Network相同的方式），最终每个用户使用本地user-item交互矩阵和从服务器获得的信息，训练自己的模型。</p><p>在Personalized Prediction Module，文章分别训练节点本地模型、用户簇模型和全局模型，并将三个模型根据权重α，α，α，最终实现个性化预测。</p><p>server-side聚合器主要实现相似用户的聚类、聚类后参与训练的用户选择、以及全局模型和用户簇模型的聚合、用户embeddings与服务器交互（加密的情况下）、item embeddings全局更新。</p><p>文章未对Raw Embedding Model中使用的特征信息作详细说明，例如任务类型、任务空间信息等。其次在相似用户簇中随机挑选用户进行训练的方式，未考虑用户参与训练的积极性，未采取相应的激励机制，同时随机挑选的用户是否能代表用户簇内绝大多数用户偏好，文章并未验证说明；</p><p>因文章中提到了GNN，最近也对GNN的相关概念进行了学习，但是并不够深入，GNN在推荐系统中被应用，但阅读文章时有很多涉及原理的知识，不是很懂，后面也会继续学习相关知识。最后，关于文章中提到的Federated Social Recommendation with Graph Neural Network，使用GNN实现推荐，打算进行详细阅读。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 论文 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 联邦学习 </tag>
+            
+            <tag> GNN </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>vue表格动态匹配列表数据</title>
       <link href="/2023/12/20/vue%E8%A1%A8%E6%A0%BC%E5%8A%A8%E6%80%81%E5%8C%B9%E9%85%8D%E5%88%97%E8%A1%A8%E6%95%B0%E6%8D%AE/"/>
       <url>/2023/12/20/vue%E8%A1%A8%E6%A0%BC%E5%8A%A8%E6%80%81%E5%8C%B9%E9%85%8D%E5%88%97%E8%A1%A8%E6%95%B0%E6%8D%AE/</url>
@@ -42,7 +94,7 @@
       
       <categories>
           
-          <category> 区块链 </category>
+          <category> 论文 </category>
           
       </categories>
       
@@ -51,7 +103,7 @@
             
             <tag> 区块链 </tag>
             
-            <tag> 众包平台 </tag>
+            <tag> 联邦学习 </tag>
             
         </tags>
       
@@ -85,7 +137,7 @@
     
     
     <entry>
-      <title>FedCrowd，区块链联合和隐私保护众包平台</title>
+      <title>FedCrowd，区块链联合和隐私保护众包平台 | 基于区块链物联网设备联邦学习系统</title>
       <link href="/2023/11/18/FedCrowd%EF%BC%8C%E5%8C%BA%E5%9D%97%E9%93%BE%E8%81%94%E5%90%88%E5%92%8C%E9%9A%90%E7%A7%81%E4%BF%9D%E6%8A%A4%E4%BC%97%E5%8C%85%E5%B9%B3%E5%8F%B0/"/>
       <url>/2023/11/18/FedCrowd%EF%BC%8C%E5%8C%BA%E5%9D%97%E9%93%BE%E8%81%94%E5%90%88%E5%92%8C%E9%9A%90%E7%A7%81%E4%BF%9D%E6%8A%A4%E4%BC%97%E5%8C%85%E5%B9%B3%E5%8F%B0/</url>
       
@@ -94,7 +146,7 @@
       
       <categories>
           
-          <category> 区块链 </category>
+          <category> 论文 </category>
           
       </categories>
       
@@ -103,7 +155,7 @@
             
             <tag> 区块链 </tag>
             
-            <tag> 众包平台 </tag>
+            <tag> 联邦学习 </tag>
             
         </tags>
       
