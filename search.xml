@@ -4,6 +4,83 @@
   
     
     <entry>
+      <title>knn回归</title>
+      <link href="/2024/04/07/knn%E5%9B%9E%E5%BD%92/"/>
+      <url>/2024/04/07/knn%E5%9B%9E%E5%BD%92/</url>
+      
+        <content type="html"><![CDATA[<p>knn同样可应用于回归问题：</p><p>找出一个样本的k个邻居，把邻居的属性的平均值赋给该样本。</p><p>缺点：</p><ul><li>对具有很多特征（几百甚至上千）的数据集效果不好</li><li>对于特征中包含很多零的稀疏矩阵效果尤其不好</li></ul><p>注意：</p><p>k值越大，对噪声越不敏感，但可能造成欠拟合；k值越小，容易造成过拟合</p><h4 id="生成训练数据"><a href="#生成训练数据" class="headerlink" title="生成训练数据"></a>生成训练数据</h4><h5 id="生成0-5范围内的随机值，这里生成40个值"><a href="#生成0-5范围内的随机值，这里生成40个值" class="headerlink" title="生成0-5范围内的随机值，这里生成40个值"></a>生成0-5范围内的随机值，这里生成40个值</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">n_dots=40</span><br><span class="line">X=5*np.random.rand(n_dots,1)</span><br></pre></td></tr></table></figure><h5 id="余弦函数生成测试数据，使用ravel处理成一维数组"><a href="#余弦函数生成测试数据，使用ravel处理成一维数组" class="headerlink" title="余弦函数生成测试数据，使用ravel处理成一维数组"></a>余弦函数生成测试数据，使用ravel处理成一维数组</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Y=np.cos(X).ravel()</span><br></pre></td></tr></table></figure><h5 id="加入噪声"><a href="#加入噪声" class="headerlink" title="加入噪声"></a>加入噪声</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Y+=0.2*np.random.rand(n_dots)-0.1</span><br></pre></td></tr></table></figure><h4 id="训练模型"><a href="#训练模型" class="headerlink" title="训练模型"></a>训练模型</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.neighbors import KNeighborsRegressor</span><br><span class="line">k=5</span><br><span class="line">knn=KNeighborsRegressor(n_neighbors=k)</span><br><span class="line">knn.fit(X,Y)</span><br></pre></td></tr></table></figure><h4 id="生成预测数据"><a href="#生成预测数据" class="headerlink" title="生成预测数据"></a>生成预测数据</h4><p>均匀分布在0-5之间的包含500个数字的一维数组，对一维数组增加一个新的维度，变成二维数组，：在前面指的是为每个元素添加，：在后面指的是为所有元素添加</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">T=np.linspace(0,5,500)[:,np.newaxis]</span><br></pre></td></tr></table></figure><h5 id="模型预测"><a href="#模型预测" class="headerlink" title="模型预测"></a>模型预测</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">y_pred=knn.predict(T)</span><br></pre></td></tr></table></figure><h5 id="计算模型在训练数据x和目标Y上的得分，得分越高，说明模型在训练数据上表现良好"><a href="#计算模型在训练数据x和目标Y上的得分，得分越高，说明模型在训练数据上表现良好" class="headerlink" title="计算模型在训练数据x和目标Y上的得分，得分越高，说明模型在训练数据上表现良好"></a>计算模型在训练数据x和目标Y上的得分，得分越高，说明模型在训练数据上表现良好</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(knn.score(X,Y))</span><br></pre></td></tr></table></figure><h5 id="定义画板"><a href="#定义画板" class="headerlink" title="定义画板"></a>定义画板</h5><h5 id="绘制预测结果，将预测结果数据连接起来，构成拟合曲线"><a href="#绘制预测结果，将预测结果数据连接起来，构成拟合曲线" class="headerlink" title="绘制预测结果，将预测结果数据连接起来，构成拟合曲线"></a>绘制预测结果，将预测结果数据连接起来，构成拟合曲线</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">plt.figure(figsize=(10,6),dpi=144)</span><br></pre></td></tr></table></figure><h5 id="绘制训练数据散点图"><a href="#绘制训练数据散点图" class="headerlink" title="绘制训练数据散点图"></a>绘制训练数据散点图</h5><p>scatter用于绘制散点图</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.scatter(X,Y,c=&#x27;g&#x27;,label=&#x27;train_data&#x27; ,s=50)</span><br></pre></td></tr></table></figure><h5 id="绘制预测数据折线图"><a href="#绘制预测数据折线图" class="headerlink" title="绘制预测数据折线图"></a>绘制预测数据折线图</h5><p>plot可以用来表示连续的数据关系,绘制折线、线图、柱状图等</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.plot(T,y_pred,c=&#x27;r&#x27;,label=&#x27;prediction&#x27;,linewidth=2)</span><br></pre></td></tr></table></figure><h5 id="展示画板"><a href="#展示画板" class="headerlink" title="展示画板"></a>展示画板</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.show()</span><br></pre></td></tr></table></figure><p><img src="https://img2.imgtp.com/2024/04/07/bwnp7Rnq.png" alt="image-20240407234613716"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> knn </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> knn </tag>
+            
+            <tag> 回归 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>stream数据收集</title>
+      <link href="/2024/04/07/stream%E6%95%B0%E6%8D%AE%E6%94%B6%E9%9B%86/"/>
+      <url>/2024/04/07/stream%E6%95%B0%E6%8D%AE%E6%94%B6%E9%9B%86/</url>
+      
+        <content type="html"><![CDATA[<h3 id="输出流中的元素"><a href="#输出流中的元素" class="headerlink" title="输出流中的元素"></a>输出流中的元素</h3><h4 id="创建测试数据"><a href="#创建测试数据" class="headerlink" title="创建测试数据"></a>创建测试数据</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);</span><br></pre></td></tr></table></figure><h4 id="顺序输出"><a href="#顺序输出" class="headerlink" title="顺序输出"></a>顺序输出</h4><ul><li>使用foreach输出，将里面函数应用每个元素</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stream.forEach(System.out::println);</span><br></pre></td></tr></table></figure><ul><li>传统迭代器输出</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Iterator&lt;Integer&gt; iterator=stream.iterator();</span><br><span class="line">while (iterator.hasNext()) &#123;</span><br><span class="line">    String name = String.valueOf(iterator.next());</span><br><span class="line">    System.out.println(name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ul><li>并行流的情况</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list.parallelStream().forEachOrdered(System.out::println);</span><br></pre></td></tr></table></figure><h4 id="并行输出"><a href="#并行输出" class="headerlink" title="并行输出"></a>并行输出</h4><p>任意顺序遍历所有元素</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list.parallelStream().forEach(System.out::println);</span><br></pre></td></tr></table></figure><h3 id="收集流中的数据"><a href="#收集流中的数据" class="headerlink" title="收集流中的数据"></a>收集流中的数据</h3><h4 id="生成指定类型的集合"><a href="#生成指定类型的集合" class="headerlink" title="生成指定类型的集合"></a>生成指定类型的集合</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Integer[] result=stream.toArray(Integer[]::new);</span><br></pre></td></tr></table></figure><h4 id="使用收集器，collect，接受一个collector接口的实例"><a href="#使用收集器，collect，接受一个collector接口的实例" class="headerlink" title="使用收集器，collect，接受一个collector接口的实例"></a>使用收集器，collect，接受一个collector接口的实例</h4><ul><li>生成常见集合</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">stream.collect(Collectors.toList());</span><br><span class="line">stream.collect(Collectors.toSet());</span><br></pre></td></tr></table></figure><ul><li>指定生成数据结构的类型</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stream.collect(Collectors.toCollection(LinkedList::new));</span><br></pre></td></tr></table></figure><ul><li>使用连接操作收集字符串</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">stream.map(p-&gt;p.toString()).collect(Collectors.joining());</span><br><span class="line">stream.map(p-&gt;p.toString()).collect(Collectors.joining(&quot;,&quot;));</span><br></pre></td></tr></table></figure><ul><li>求平均值、总数、和、最大、最小</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">IntSummaryStatistics statistics=stream.collect(Collectors.summarizingInt(Integer::intValue));</span><br><span class="line">double avg=statistics.getAverage();</span><br><span class="line">long count=statistics.getCount();</span><br><span class="line">long sum=statistics.getSum();</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> stream流 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> stream </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>optinal的创建、转化流</title>
+      <link href="/2024/04/05/optinal%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E8%BD%AC%E5%8C%96%E6%B5%81/"/>
+      <url>/2024/04/05/optinal%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E8%BD%AC%E5%8C%96%E6%B5%81/</url>
+      
+        <content type="html"><![CDATA[<p>前面我们一直使用给到的Optional对象进行操作，今天实现自行创建和转化流</p><h3 id="创建optional流"><a href="#创建optional流" class="headerlink" title="创建optional流"></a>创建optional流</h3><h4 id="生成一个optional-如果传入的值为空-则返回空optional对象"><a href="#生成一个optional-如果传入的值为空-则返回空optional对象" class="headerlink" title="生成一个optional,如果传入的值为空,则返回空optional对象"></a>生成一个optional,如果传入的值为空,则返回空optional对象</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Optional&lt;String&gt;optionalelse=Optional.ofNullable(&quot;b&quot;);</span><br></pre></td></tr></table></figure><h4 id="生成一个optional-如果传入的值为空-生成一个optional-如果传入的值为空-则抛出空指针异常"><a href="#生成一个optional-如果传入的值为空-生成一个optional-如果传入的值为空-则抛出空指针异常" class="headerlink" title="生成一个optional,如果传入的值为空,生成一个optional,如果传入的值为空,则抛出空指针异常"></a>生成一个optional,如果传入的值为空,生成一个optional,如果传入的值为空,则抛出空指针异常</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Optional&lt;String&gt;optional=Optional.of(&quot;a&quot;);</span><br></pre></td></tr></table></figure><h4 id="生成一个空的optional"><a href="#生成一个空的optional" class="headerlink" title="生成一个空的optional"></a>生成一个空的optional</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Optional&lt;String&gt;empty=Optional.empty();</span><br></pre></td></tr></table></figure><h4 id="生成一个由多个optional组成的optional流"><a href="#生成一个由多个optional组成的optional流" class="headerlink" title="生成一个由多个optional组成的optional流"></a>生成一个由多个optional组成的optional流</h4><p>flatmap会将流组合起来,如果流为空,忽略,不为空则组合</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Optional&lt;String&gt;result= Optional.of(&quot;a&quot;).flatMap(s-&gt;Optional.of(&quot;b&quot;));</span><br></pre></td></tr></table></figure><h3 id="optional转换为流"><a href="#optional转换为流" class="headerlink" title="optional转换为流"></a>optional转换为流</h3><ul><li>当入参类型和返回类型一致时,可以::</li><li>stream方法会将optional对象转换为流,如果optional为空,则返回空流</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String[] arr=&#123;&quot;a&quot;,&quot;b&quot;,&quot;c&quot;&#125;;</span><br><span class="line">Stream&lt;String&gt;arrStream=Arrays.stream(arr);</span><br><span class="line">Stream&lt;String&gt;resultStream=arrStream.map(Optional::of).flatMap(Optional::stream);</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> stream流 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> optional类型 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>optional&lt;T&gt;的消费、获取、管道化</title>
       <link href="/2024/04/04/optional%E7%9A%84%E6%B6%88%E8%B4%B9%E3%80%81%E8%8E%B7%E5%8F%96%E3%80%81%E7%AE%A1%E9%81%93%E5%8C%96/"/>
       <url>/2024/04/04/optional%E7%9A%84%E6%B6%88%E8%B4%B9%E3%80%81%E8%8E%B7%E5%8F%96%E3%80%81%E7%AE%A1%E9%81%93%E5%8C%96/</url>
